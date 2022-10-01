@@ -9,10 +9,7 @@ import com.kerjahubs.userservice.service.RegisterUserRetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -20,7 +17,7 @@ public class UserController {
     @Autowired
     RegisterUserRetailService registerUserRetailService;
 
-    @GetMapping(value = UrlValues.registerRetail)
+    @PostMapping(value = UrlValues.registerRetail)
     public ResponseEntity<?> registerRetail(
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
