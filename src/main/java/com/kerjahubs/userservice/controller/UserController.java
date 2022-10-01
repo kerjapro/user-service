@@ -5,6 +5,8 @@ import com.kerjahubs.common.constant.RequestHeaders;
 import com.kerjahubs.common.model.request.BaseRequest;
 import com.kerjahubs.userservice.constant.UrlValues;
 import com.kerjahubs.userservice.model.request.RequestRegister;
+import com.kerjahubs.userservice.model.request.RequestRegisterPartner;
+import com.kerjahubs.userservice.service.RegisterPartnerService;
 import com.kerjahubs.userservice.service.RegisterUserRetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ public class UserController {
     @Autowired
     RegisterUserRetailService registerUserRetailService;
 
+    @Autowired
+    RegisterPartnerService registerPartnerService;
+
     @PostMapping(value = UrlValues.registerRetail)
     public ResponseEntity<?> registerRetail(
         @RequestHeader(RequestHeaders.language) String language,
@@ -27,6 +32,22 @@ public class UserController {
             registerUserRetailService.registerUserRetail(
                 new BaseRequest<>(
                     requestRegister
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @PostMapping(value = UrlValues.registerPartner)
+    public ResponseEntity<?> registerPartner(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestRegisterPartner requestRegisterPartner
+    ){
+        return new ResponseEntity<>(
+            registerPartnerService.registerPartner(
+                new BaseRequest<>(
+                    requestRegisterPartner
                 )
             ),
             HttpStatus.OK

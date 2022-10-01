@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 public class RequestRegisterPartner {
+    private String cid = DefaultValues.emptyString;
     private String partnerType = DefaultValues.emptyString;
     private String partnerName = DefaultValues.emptyString;
     private String about = DefaultValues.emptyString;

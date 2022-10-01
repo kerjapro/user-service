@@ -29,7 +29,7 @@ public class UserBase implements Serializable {
     private String fullName = DefaultValues.emptyString;
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
-    private Gender gender = Gender.PRIA;
+    private Gender gender;
     @Temporal(TemporalType.DATE)
     @Column(name = "birthDate")
     private Date birthDate = DateConversion.getDateNow(DateFormats.birthdate);

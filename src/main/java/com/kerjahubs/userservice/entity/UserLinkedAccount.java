@@ -2,6 +2,7 @@ package com.kerjahubs.userservice.entity;
 
 import com.kerjahubs.common.constant.DefaultValues;
 import com.kerjahubs.common.converter.StringToStringConverter;
+import com.kerjahubs.common.enums.AppsLinkedAccount;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,25 +10,26 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="USER_DOCUMENT")
+@Table(name="USER_LINKED_ACCOUNT")
 @NoArgsConstructor
 public class UserLinkedAccount {
     @Id
     @Convert(converter = StringToStringConverter.class)
-    @Column(name = "id")
+    @Column(name = "id", length = 36)
     private String id = DefaultValues.emptyString;
-    @Column(name = "cid")
+    @Column(name = "cid", length = 36)
     private String cid = DefaultValues.emptyString;
+    @Enumerated(EnumType.STRING)
     @Column(name = "apps")
-    private String apps = DefaultValues.emptyString;
-    @Column(name = "appsId")
+    private AppsLinkedAccount apps;
+    @Column(name = "appsId", length = 100)
     private String appsId = DefaultValues.emptyString;
-    @Column(name = "appsCustomerName")
+    @Column(name = "appsCustomerName", length = 100)
     private String appsCustomerName = DefaultValues.emptyString;
     @Column(name = "appsCustomerImage")
     private String appsCustomerImage = DefaultValues.emptyString;
-    @Column(name = "appsCustomerEmail")
+    @Column(name = "appsCustomerEmail", length = 100)
     private String appsCustomerEmail = DefaultValues.emptyString;
-    @Column(name = "appsToken")
+    @Column(name = "appsToken", length = 100)
     private String appsToken = DefaultValues.emptyString;
 }
