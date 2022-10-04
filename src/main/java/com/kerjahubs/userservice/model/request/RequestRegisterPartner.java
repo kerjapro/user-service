@@ -25,5 +25,4 @@ public class RequestRegisterPartner {
     private String nik = DefaultValues.emptyString;
     private String npwpNumber = DefaultValues.emptyString;
     private List<Documents> documents = new ArrayList<>();
-    private String registrationDate = DefaultValues.emptyString;
 }
