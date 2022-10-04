@@ -1,7 +1,6 @@
 package com.kerjahubs.userservice.model.request;
 
 import com.kerjahubs.common.constant.DefaultValues;
-import com.kerjahubs.userservice.model.OtherAccount;
 import lombok.Data;
 
 @Data

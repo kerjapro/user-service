@@ -6,7 +6,6 @@ import com.kerjahubs.common.converter.StringToStringConverter;
 import com.kerjahubs.common.enums.Gender;
 import com.kerjahubs.common.enums.UserType;
 import com.kerjahubs.common.utility.DateConversion;
-import io.micrometer.core.lang.Nullable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.codehaus.commons.nullanalysis.NotNull;
@@ -66,4 +65,6 @@ public class UserBase implements Serializable {
     private Date lastLogin = DateConversion.getDateNow(DateFormats.datetime);
     @Column(name = "sessionId", length = 36)
     private String sessionId = DefaultValues.emptyString;
+    @Column(name = "platformRegister", length = 20)
+    private String platformRegister = DefaultValues.emptyString;
 }
