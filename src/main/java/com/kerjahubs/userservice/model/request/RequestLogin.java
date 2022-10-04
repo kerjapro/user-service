@@ -10,4 +10,5 @@ public class RequestLogin {
     private String password = DefaultValues.emptyString;
     private Boolean isUsingOtherAccount = Boolean.FALSE;
     private OtherAccount otherAccount = new OtherAccount();
+    private String platform = DefaultValues.emptyString;
 }
