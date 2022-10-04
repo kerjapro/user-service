@@ -11,8 +11,8 @@ public class RetailData {
     private String fullname = DefaultValues.emptyString;
     private String gender = DefaultValues.emptyString;
     private String birthDate = DefaultValues.emptyString;
-    private List<Preferences> preferences = new ArrayList<>();
-    private List<Sectors> sectors = new ArrayList<>();
+    private List<String> preferences = new ArrayList<>();
+    private List<String> sectors = new ArrayList<>();
     private List<Documents> documents = new ArrayList<>();
     private List<LinkedAccounts> linkedAccounts = new ArrayList<>();
 }

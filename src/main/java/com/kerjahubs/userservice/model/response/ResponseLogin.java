@@ -17,6 +17,8 @@ public class ResponseLogin {
     private Boolean isVerified = Boolean.FALSE;
     private String lastLogin = DefaultValues.emptyString;
     private RetailData retailData = new RetailData();
+    private List<String> preferences = new ArrayList<>();
+    private List<String> sectors = new ArrayList<>();
     private List<PartnerData> partnerData = new ArrayList<>();
     private String sessionId = DefaultValues.emptyString;
 }

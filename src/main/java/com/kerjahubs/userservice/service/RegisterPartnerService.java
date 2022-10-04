@@ -67,7 +67,7 @@ public class RegisterPartnerService {
     }
 
     public UserPartner setupUserPartner(RequestRegisterPartner request) {
-        int runningPartner = (int) userPartnerRepository.count()+1;
+        int runningPartner = userPartnerRepository.runningNumberPartner(request.getPartnerType())+1;
 
         UserPartner userPartner = new UserPartner();
         userPartner.setCid(request.getCid());
