@@ -1,6 +1,7 @@
 package com.kerjahubs.userservice.service;
 
 import com.kerjahubs.common.constant.DateFormats;
+import com.kerjahubs.common.constant.DefaultValues;
 import com.kerjahubs.common.constant.FormatValues;
 import com.kerjahubs.common.constant.MessageValues;
 import com.kerjahubs.common.enums.KelasType;
@@ -13,6 +14,8 @@ import com.kerjahubs.userservice.model.request.RequestAddProduct;
 import com.kerjahubs.userservice.repository.KelasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 @Service
 public class AddEditKelasService {
@@ -79,20 +82,20 @@ public class AddEditKelasService {
                 )
             );
         }
-        kelas.setPartnerId(request.getPartnerId());
-        kelas.setSectorId(request.getSectorId());
-        kelas.setSectorSubId(request.getSectorSubId());
-        kelas.setKelasType(KelasType.valueOf(KelasType.valueOf(request.getProductType()).getName()));
-        kelas.setKelasName(request.getProductName());
-        kelas.setKelasDesc(request.getProductDesc());
-        kelas.setPrice(request.getPrice());
-        kelas.setSeat(request.getSeat());
-        kelas.setUrl(request.getUrl());
-        kelas.setImage(request.getImage());
-        kelas.setLanguage(request.getLanguage());
-        kelas.setEventDate(DateConversion.toDate(request.getEventDate(), DateFormats.datetime));
-        kelas.setExpiredDate(DateConversion.toDate(request.getExpiredDate(), DateFormats.datetime));
-        kelas.setCreatedAt(DateConversion.getDateNow(DateFormats.datetime));
+        kelas.setPartnerId(request.getPartnerId().isEmpty() ? kelas.getPartnerId() : request.getPartnerId());
+        kelas.setSectorId(request.getSectorId().isEmpty() ? kelas.getSectorId() : request.getSectorId());
+        kelas.setSectorSubId(request.getSectorSubId().isEmpty() ? kelas.getSectorSubId() : request.getSectorSubId());
+        kelas.setKelasType(request.getProductType().isEmpty() ? kelas.getKelasType() : KelasType.valueOf(KelasType.valueOf(request.getProductType()).getName()));
+        kelas.setKelasName(request.getProductName().isEmpty() ? kelas.getKelasName() : request.getProductName());
+        kelas.setKelasDesc(request.getProductDesc().isEmpty() ? kelas.getKelasDesc() : request.getProductDesc());
+        kelas.setPrice(request.getPrice().equals(BigDecimal.ZERO) ? kelas.getPrice() : request.getPrice());
+        kelas.setSeat(request.getSeat()==DefaultValues.emptyInteger ? kelas.getSeat() : request.getSeat());
+        kelas.setUrl(request.getUrl().isEmpty() ? kelas.getUrl() : request.getUrl());
+        kelas.setImage(request.getImage().isEmpty() ? kelas.getImage() : request.getImage());
+        kelas.setLanguage(request.getLanguage().isEmpty() ? kelas.getLanguage() : request.getLanguage());
+        kelas.setEventDate(request.getEventDate().isEmpty() ? kelas.getEventDate() : DateConversion.toDate(request.getEventDate(), DateFormats.datetime));
+        kelas.setExpiredDate(request.getExpiredDate().isEmpty() ? kelas.getExpiredDate() : DateConversion.toDate(request.getExpiredDate(), DateFormats.datetime));
+        kelas.setCreatedAt(request.getId().isEmpty() ? DateConversion.getDateNow(DateFormats.datetime) : kelas.getCreatedAt());
         kelas.setUpdatedAt(DateConversion.getDateNow(DateFormats.datetime));
         kelas.setStatus(request.getStatus());
         return kelas;
