@@ -20,5 +20,6 @@ public class RequestAddProduct {
     private String language = DefaultValues.emptyString;
     private String eventDate = DefaultValues.emptyString;
     private String expiredDate = DefaultValues.emptyString;
-    private String status = DefaultValues.emptyString;
+    private String url = DefaultValues.emptyString;
+    private Boolean status = Boolean.FALSE;
 }
