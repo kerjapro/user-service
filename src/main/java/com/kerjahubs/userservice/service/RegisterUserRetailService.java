@@ -29,8 +29,8 @@ public class RegisterUserRetailService {
                 && userBaseRepository.existsByEmail(baseRequest.getRequest().getEmail())
             ) {
                 response.setResponseError(
-                    MessageValues.error.title.baseError,
-                    MessageValues.error.message.registerUser.existEmail
+                    MessageValues.error.title.register.general,
+                    MessageValues.error.message.register.user.existEmail
                 );
                 return response;
             }
@@ -39,8 +39,8 @@ public class RegisterUserRetailService {
                 && userBaseRepository.existsByPhoneNumber(baseRequest.getRequest().getPhoneNumber())
             ) {
                 response.setResponseError(
-                    MessageValues.error.title.baseError,
-                    MessageValues.error.message.registerUser.existPhone
+                    MessageValues.error.title.register.general,
+                    MessageValues.error.message.register.user.existPhone
                 );
                 return response;
             }
@@ -48,13 +48,13 @@ public class RegisterUserRetailService {
             UserBase userBase = setupUserBase(baseRequest.getRequest());
             userBaseRepository.save(userBase);
             response.setResponseSuccess(
-                MessageValues.success.title.baseSuccess,
-                MessageValues.success.message.baseSuccess
+                MessageValues.success.title.register.general,
+                MessageValues.success.message.register.user
             );
         } catch (Exception e) {
             response.setResponseError(
-                MessageValues.error.title.baseError,
-                MessageValues.error.message.baseError
+                MessageValues.error.title.general,
+                MessageValues.error.message.general
             );
         }
         return response;

@@ -30,40 +30,27 @@ public class AddEditKelasService {
             if(!baseRequest.getRequest().getStatus()){
                 kelasRepository.delete(kelas);
                 response.setResponseSuccess(
-                    MessageValues.success.title.deleteKelas,
-                    MessageValues.success.message.kelas.deleteKelas
+                    MessageValues.success.title.kelas.delete,
+                    MessageValues.success.message.kelas.delete
                 );
             }else{
                 kelasRepository.saveAndFlush(kelas);
                 if(baseRequest.getRequest().getId().isEmpty()){
                     response.setResponseSuccess(
-                        MessageValues.success.title.addKelas,
-                        MessageValues.success.message.kelas.addKelas
+                        MessageValues.success.title.kelas.add,
+                        MessageValues.success.message.kelas.add
                     );
                 }
                 response.setResponseSuccess(
-                    MessageValues.success.title.editKelas,
-                    MessageValues.success.message.kelas.editKelas
+                    MessageValues.success.title.kelas.edit,
+                    MessageValues.success.message.kelas.edit
                 );
             }
         } catch (Exception e){
-            if(!baseRequest.getRequest().getStatus()){
-                response.setResponseError(
-                    MessageValues.error.title.deleteKelas,
-                    MessageValues.error.message.kelas.deleteKelas
-                );
-            }else{
-                if(baseRequest.getRequest().getId().isEmpty()){
-                    response.setResponseError(
-                        MessageValues.error.title.addKelas,
-                        MessageValues.error.message.kelas.addKelas
-                    );
-                }
-                response.setResponseError(
-                    MessageValues.error.title.editKelas,
-                    MessageValues.error.message.kelas.editKelas
-                );
-            }
+            response.setResponseError(
+                MessageValues.error.title.general,
+                MessageValues.error.message.general
+            );
         }
         return response;
     }

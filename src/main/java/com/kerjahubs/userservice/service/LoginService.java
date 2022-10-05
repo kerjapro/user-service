@@ -40,7 +40,7 @@ public class LoginService {
                 && !userBaseRepository.existsByPhoneNumber(baseRequest.getRequest().getUsername())
             ) {
                 response.setResponseError(
-                    MessageValues.error.title.baseError,
+                    MessageValues.error.title.general,
                     MessageValues.error.message.login.notFound
                 );
                 return response;
@@ -50,7 +50,7 @@ public class LoginService {
                 && !userBaseRepository.existsByPassword(baseRequest.getRequest().getPassword())
             ) {
                 response.setResponseError(
-                    MessageValues.error.title.baseError,
+                    MessageValues.error.title.general,
                     MessageValues.error.message.login.wrongPassword
                 );
                 return response;
@@ -60,7 +60,10 @@ public class LoginService {
 
 
         } catch (Exception e) {
-
+            response.setResponseError(
+                MessageValues.error.title.general,
+                MessageValues.error.message.general
+            );
         }
         return response;
     }
