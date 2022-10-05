@@ -10,6 +10,8 @@ import java.util.List;
 @Data
 public class RequestAddBenefitProduct {
     private String id = DefaultValues.emptyString;
-    private String partnerId = DefaultValues.emptyString;
-    private List<Benefit> benefits = new ArrayList<>();
+    private String productId = DefaultValues.emptyString;
+    private String benefitName = DefaultValues.emptyString;
+    private Integer sequence = DefaultValues.emptyInteger;
+    private Boolean status = Boolean.TRUE;
 }

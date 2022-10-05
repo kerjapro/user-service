@@ -27,24 +27,24 @@ public class AddEditKelasService {
 
         try{
             Kelas kelas = setupKelas(baseRequest.getRequest());
+            kelasRepository.saveAndFlush(kelas);
             if(!baseRequest.getRequest().getStatus()){
-                kelasRepository.delete(kelas);
                 response.setResponseSuccess(
                     MessageValues.success.title.kelas.delete,
                     MessageValues.success.message.kelas.delete
                 );
             }else{
-                kelasRepository.saveAndFlush(kelas);
                 if(baseRequest.getRequest().getId().isEmpty()){
                     response.setResponseSuccess(
                         MessageValues.success.title.kelas.add,
                         MessageValues.success.message.kelas.add
                     );
+                }else{
+                    response.setResponseSuccess(
+                        MessageValues.success.title.kelas.edit,
+                        MessageValues.success.message.kelas.edit
+                    );
                 }
-                response.setResponseSuccess(
-                    MessageValues.success.title.kelas.edit,
-                    MessageValues.success.message.kelas.edit
-                );
             }
         } catch (Exception e){
             response.setResponseError(
