@@ -26,6 +26,7 @@ public class UserController {
     @Autowired
     RegisterPartnerService registerPartnerService;
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.login)
     public ResponseEntity<?> login(
         @RequestHeader(RequestHeaders.language) String language,
@@ -42,6 +43,7 @@ public class UserController {
         );
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.registerRetail)
     public ResponseEntity<?> registerRetail(
         @RequestHeader(RequestHeaders.language) String language,
@@ -58,6 +60,7 @@ public class UserController {
         );
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.registerPartner)
     public ResponseEntity<?> registerPartner(
         @RequestHeader(RequestHeaders.language) String language,
