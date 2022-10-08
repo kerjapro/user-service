@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface DocumentTypeRepository extends JpaRepository<DocumentType, String> {
-    @Query(value = "SELECT id FROM document_type dt WHERE dt.name = :name", nativeQuery = true)
-    String findIdByName(@Param("name") String name);
+    @Query(value = "SELECT * FROM document_type dt WHERE dt.name = :name", nativeQuery = true)
+    Optional<DocumentType> findIdByName(@Param("name") String name);
 }

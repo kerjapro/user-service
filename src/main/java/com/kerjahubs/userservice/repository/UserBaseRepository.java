@@ -14,11 +14,11 @@ public interface UserBaseRepository extends JpaRepository<UserBase, String> {
     boolean existsByPhoneNumber(String phoneNumber);
     boolean existsByPassword(String password);
 
-    @Query(value = "SELECT ub.cid, ub.email, ub.phone_number, ub.type, ub.is_verified, ub.last_login, ub.full_name, ub.gender, ub.birth_date, ub.preferences, ub.sectors" +
-        "FROM user_base ub" +
-        "WHERE ub.password = :password " +
-        "AND ub.email = :username " +
-        "OR ub.phone_number = :username ;", nativeQuery = true)
+    @Query(value = "SELECT *" +
+        " FROM user_base ub" +
+        " WHERE ub.password = :password" +
+        " AND ub.email = :username" +
+        " OR ub.phone_number = :username ;", nativeQuery = true)
     Optional<UserBase> findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
 

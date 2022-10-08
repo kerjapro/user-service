@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name="USER_DOCUMENT")
+@SecondaryTable(name="DOCUMENT_TYPE", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))
 @NoArgsConstructor
 public class UserDocument {
     @Id
@@ -19,11 +20,12 @@ public class UserDocument {
     private String id = DefaultValues.emptyString;
     @Column(name = "cid", length = 36)
     private String cid = DefaultValues.emptyString;
-    @Column(name = "typeId", length = 36)
-    private String typeId = DefaultValues.emptyString;
     @Enumerated(EnumType.STRING)
-    @Column(name = "groupType")
+    @Column(name = "groupType", length = 30)
     private DocumentGroupType groupType;
     @Column(name = "value")
     private String value = DefaultValues.emptyString;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "typeId")
+    private DocumentType documentType;
 }

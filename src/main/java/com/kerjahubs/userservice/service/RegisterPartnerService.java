@@ -9,6 +9,7 @@ import com.kerjahubs.common.model.request.BaseRequest;
 import com.kerjahubs.common.model.response.BaseResponse;
 import com.kerjahubs.common.utility.DateConversion;
 import com.kerjahubs.common.utility.StringConversion;
+import com.kerjahubs.userservice.entity.DocumentType;
 import com.kerjahubs.userservice.entity.UserDocument;
 import com.kerjahubs.userservice.entity.UserPartner;
 import com.kerjahubs.userservice.model.Documents;
@@ -107,7 +108,7 @@ public class RegisterPartnerService {
             UserDocument userDocument = new UserDocument();
             userDocument.setId(UUID.randomUUID().toString());
             userDocument.setCid(userPartner.getCid());
-            userDocument.setTypeId(documentTypeRepository.findIdByName(document.getType()));
+            userDocument.setDocumentType(documentTypeRepository.findIdByName(document.getType()).orElseGet(DocumentType::new));
             userDocument.setGroupType(DocumentGroupType.valueOf(request.getPartnerType()));
             userDocument.setValue(document.getValue());
             listDocument.add(userDocument);

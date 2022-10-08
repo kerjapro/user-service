@@ -12,7 +12,9 @@ import org.codehaus.commons.nullanalysis.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -40,7 +42,7 @@ public class UserBase implements Serializable {
     @Column(name = "password")
     private String password = DefaultValues.emptyString;
     @Enumerated(EnumType.STRING)
-    @Column(name = "type")
+    @Column(name = "type", columnDefinition = "ENUM", length = 20)
     private UserType type = UserType.RETAIL;
     @Column(name = "isVerified", columnDefinition = "TINYINT", length = 1)
     private Boolean isVerified = Boolean.FALSE;
@@ -67,4 +69,8 @@ public class UserBase implements Serializable {
     private String sessionId = DefaultValues.emptyString;
     @Column(name = "platformRegister", length = 20)
     private String platformRegister = DefaultValues.emptyString;
+    @OneToMany(mappedBy = "cid")
+    List<UserDocument> userDocuments = new ArrayList<>();
+    @OneToMany(mappedBy = "cid")
+    List<UserLinkedAccount> userLinkedAccounts = new ArrayList<>();
 }

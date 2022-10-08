@@ -19,6 +19,5 @@ public class ResponseLogin {
     private RetailData retailData = new RetailData();
     private List<String> preferences = new ArrayList<>();
     private List<String> sectors = new ArrayList<>();
-    private List<PartnerData> partnerData = new ArrayList<>();
     private String sessionId = DefaultValues.emptyString;
 }

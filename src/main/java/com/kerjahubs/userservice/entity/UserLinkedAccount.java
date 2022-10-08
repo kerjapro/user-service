@@ -3,6 +3,8 @@ package com.kerjahubs.userservice.entity;
 import com.kerjahubs.common.constant.DefaultValues;
 import com.kerjahubs.common.converter.StringToStringConverter;
 import com.kerjahubs.common.enums.AppsLinkedAccount;
+import com.kerjahubs.common.enums.DocumentGroupType;
+import com.kerjahubs.common.enums.UserType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -32,4 +34,7 @@ public class UserLinkedAccount {
     private String appsCustomerEmail = DefaultValues.emptyString;
     @Column(name = "appsToken", length = 100)
     private String appsToken = DefaultValues.emptyString;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "groupType", length = 30)
+    private DocumentGroupType groupType;
 }
