@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class KelasControlleer {
+public class KelasController {
     @Autowired
     AddEditKelasService addEditKelasService;
     @Autowired
