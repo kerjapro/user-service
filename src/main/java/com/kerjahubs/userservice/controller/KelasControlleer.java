@@ -26,6 +26,7 @@ public class KelasControlleer {
     @Autowired
     AddEditModulService addEditModulService;
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.kelas)
     public ResponseEntity<?> kelas(
         @RequestHeader(RequestHeaders.language) String language,
@@ -42,6 +43,7 @@ public class KelasControlleer {
         );
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.benefit)
     public ResponseEntity<?> benefit(
         @RequestHeader(RequestHeaders.language) String language,
@@ -58,6 +60,7 @@ public class KelasControlleer {
         );
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.modul)
     public ResponseEntity<?> modul(
         @RequestHeader(RequestHeaders.language) String language,
