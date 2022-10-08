@@ -56,21 +56,18 @@ public class LoginService {
                 return response;
             }
 
-            if (!baseRequest.getRequest().getUsername().isEmpty()
-                && !userBaseRepository.existsByEmail(baseRequest.getRequest().getUsername())
-                && !userBaseRepository.existsByPhoneNumber(baseRequest.getRequest().getUsername())
-            ) {
+            UserBase userBase = userBaseRepository.findByUsernameAndPassword(
+                baseRequest.getRequest().getUsername(),
+                baseRequest.getRequest().getPassword()
+            ).orElseGet(UserBase::new);
+
+            if (userBase.getCid().isEmpty()) {
                 response.setResponseError(
                     MessageValues.error.title.general,
                     MessageValues.error.message.login.notFound
                 );
                 return response;
             }
-
-            UserBase userBase = userBaseRepository.findByUsernameAndPassword(
-                baseRequest.getRequest().getUsername(),
-                baseRequest.getRequest().getPassword()
-            ).orElseGet(UserBase::new);
 
             if (!userBase.getPassword().equalsIgnoreCase(baseRequest.getRequest().getPassword())) {
                 response.setResponseError(
