@@ -67,9 +67,12 @@ public class LoginService {
                 return response;
             }
 
-            if (!baseRequest.getRequest().getPassword().isEmpty()
-                && !userBaseRepository.existsByPassword(baseRequest.getRequest().getPassword())
-            ) {
+            UserBase userBase = userBaseRepository.findByUsernameAndPassword(
+                baseRequest.getRequest().getUsername(),
+                baseRequest.getRequest().getPassword()
+            ).orElseGet(UserBase::new);
+
+            if (!userBase.getPassword().equalsIgnoreCase(baseRequest.getRequest().getPassword())) {
                 response.setResponseError(
                     MessageValues.error.title.general,
                     MessageValues.error.message.login.wrongPassword
@@ -78,10 +81,7 @@ public class LoginService {
             }
 
             dataResponse = setupResponseLogin(
-                userBaseRepository.findByUsernameAndPassword(
-                    baseRequest.getRequest().getUsername(),
-                    baseRequest.getRequest().getPassword()
-                ).orElseGet(UserBase::new)
+                userBase
             );
             response.setResponse(dataResponse);
         } catch (Exception e) {
