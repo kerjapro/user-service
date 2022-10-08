@@ -28,6 +28,9 @@ public class UserController {
     @Autowired
     EditProfileRetailService editProfileRetailService;
 
+    @Autowired
+    ChangePasswordService changePasswordService;
+
     @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.login)
     public ResponseEntity<?> login(
@@ -107,6 +110,23 @@ public class UserController {
             inquiryProfilePartnerService.getProfilePartner(
                 new BaseRequest<>(
                     requestInquiryProfilePartner
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.changePassword)
+    public ResponseEntity<?> changePassword(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestChangePassword requestChangePassword
+    ){
+        return new ResponseEntity<>(
+            changePasswordService.changePassword(
+                new BaseRequest<>(
+                    requestChangePassword
                 )
             ),
             HttpStatus.OK

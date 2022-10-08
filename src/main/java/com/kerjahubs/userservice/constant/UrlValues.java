@@ -9,6 +9,7 @@ public class UrlValues {
     public static final String kelas = "user/add-product";
     public static final String modul = "user/add-module-product";
     public static final String benefit = "user/add-benefit-product";
+    public static final String changePassword = "user/change-password";
     public static final String getBanners = "config/banners";
     public static final String getParameters = "config/parameters";
 }
