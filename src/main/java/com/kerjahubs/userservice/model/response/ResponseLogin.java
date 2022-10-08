@@ -1,12 +1,8 @@
 package com.kerjahubs.userservice.model.response;
 
 import com.kerjahubs.common.constant.DefaultValues;
-import com.kerjahubs.userservice.model.PartnerData;
 import com.kerjahubs.userservice.model.RetailData;
 import lombok.Data;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 public class ResponseLogin {
@@ -17,7 +13,5 @@ public class ResponseLogin {
     private Boolean isVerified = Boolean.FALSE;
     private String lastLogin = DefaultValues.emptyString;
     private RetailData retailData = new RetailData();
-    private List<String> preferences = new ArrayList<>();
-    private List<String> sectors = new ArrayList<>();
-    private String sessionId = DefaultValues.emptyString;
+    private String token = DefaultValues.emptyString;
 }

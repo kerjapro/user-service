@@ -21,5 +21,10 @@ public interface UserBaseRepository extends JpaRepository<UserBase, String> {
         " OR ub.phone_number = :username ;", nativeQuery = true)
     Optional<UserBase> findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
+    @Query(value = "SELECT *" +
+        " FROM user_base ub" +
+        " WHERE ub.email = :email ;", nativeQuery = true)
+    Optional<UserBase> findByEmail(@Param("email") String email);
+
 
 }

@@ -15,6 +15,7 @@ import com.kerjahubs.userservice.entity.UserBase;
 import com.kerjahubs.userservice.entity.UserDocument;
 import com.kerjahubs.userservice.entity.UserLinkedAccount;
 import com.kerjahubs.userservice.model.Documents;
+import com.kerjahubs.userservice.model.LinkedAccounts;
 import com.kerjahubs.userservice.model.RetailData;
 import com.kerjahubs.userservice.model.request.RequestLogin;
 import com.kerjahubs.userservice.model.response.ResponseLogin;
@@ -42,14 +43,17 @@ public class LoginService {
         BaseResponse<ResponseLogin> response = new BaseResponse<>();
 
         try {
-            ResponseLogin dataResponse = new ResponseLogin();
-            String cid = DefaultValues.emptyString;
+            ResponseLogin dataResponse;
             if (baseRequest.getRequest().getIsUsingOtherAccount()) {
+                UserBase userBase = setupUserBase(baseRequest.getRequest());
                 UserLinkedAccount userLinkedAccount = setupUserLinkedAccount(
-                    baseRequest.getRequest()
+                    baseRequest.getRequest(),
+                    userBase
                 );
                 userLinkedAccountRepository.saveAndFlush(userLinkedAccount);
-                cid = userLinkedAccount.getCid();
+                dataResponse = setupResponseLogin(userBase);
+                response.setResponse(dataResponse);
+                return response;
             }
 
             if (!baseRequest.getRequest().getUsername().isEmpty()
@@ -73,12 +77,12 @@ public class LoginService {
                 return response;
             }
 
-            setupResponseLogin(
-                baseRequest.getRequest(),
-                baseRequest.getRequest().getIsUsingOtherAccount(),
-                cid
+            dataResponse = setupResponseLogin(
+                userBaseRepository.findByUsernameAndPassword(
+                    baseRequest.getRequest().getUsername(),
+                    baseRequest.getRequest().getPassword()
+                ).orElseGet(UserBase::new)
             );
-
             response.setResponse(dataResponse);
         } catch (Exception e) {
             response.setResponseError(
@@ -89,23 +93,34 @@ public class LoginService {
         return response;
     }
 
-    public UserLinkedAccount setupUserLinkedAccount(
-        RequestLogin request
-    ) {
-        boolean existUser = userLinkedAccountRepository.existsOtherAccount(
-            request.getOtherAccount().getType(),
+    public UserBase setupUserBase(RequestLogin request){
+        UserBase userBase = userBaseRepository.findByEmail(
             request.getOtherAccount().getEmail()
-        );
+        ).orElseGet(UserBase::new);
 
+        List<UserLinkedAccount> listAccounts = new ArrayList<>();
+
+        if(userBase.getCid().isEmpty()){
+            userBase = registerUserBase(request);
+            userBaseRepository.save(userBase);
+
+            listAccounts.add(setupUserLinkedAccount(request, userBase));
+            userBase.setUserLinkedAccounts(listAccounts);
+        }
+
+        return userBase;
+    }
+
+    public UserLinkedAccount setupUserLinkedAccount(
+        RequestLogin request,
+        UserBase userBase
+    ) {
         UserLinkedAccount userLinkedAccount = userLinkedAccountRepository.findByAppsAndEmail(
             request.getOtherAccount().getType(),
             request.getOtherAccount().getEmail()
         ).orElseGet(UserLinkedAccount::new);
 
-        UserBase userBase = userBaseRepository.findById(userLinkedAccount.getCid()).orElseGet(UserBase::new);
-
-        if (!existUser) {
-            registerUserBase(request);
+        if(userLinkedAccount.getId().isEmpty()){
             userLinkedAccount.setId(
                 UUID.randomUUID().toString()
             );
@@ -122,9 +137,8 @@ public class LoginService {
         return userLinkedAccount;
     }
 
-    public void registerUserBase(RequestLogin request) {
+    public UserBase registerUserBase(RequestLogin request) {
         int totalUser = (int) (userBaseRepository.count() + 1);
-
         UserBase userBase = new UserBase();
         userBase.setCid(
             String.format(
@@ -139,28 +153,13 @@ public class LoginService {
         userBase.setLastLogin(DateConversion.getDateNow(DateFormats.datetime));
         userBase.setSessionId(UUID.randomUUID().toString());
         userBase.setPlatformRegister(request.getPlatform());
-        userBaseRepository.save(userBase);
+        return userBase;
     }
 
-    public void setupResponseLogin(
-        RequestLogin request,
-        Boolean usingLinkedAccount,
-        String cid
+    public ResponseLogin setupResponseLogin(
+        UserBase userBase
     ) {
         ResponseLogin responseLogin = new ResponseLogin();
-        UserBase userBase;
-
-        if (usingLinkedAccount) {
-            userBase = userBaseRepository.findById(
-                cid
-            ).orElseGet(UserBase::new);
-        } else {
-            userBase = userBaseRepository.findByUsernameAndPassword(
-                request.getUsername(),
-                request.getPassword()
-            ).orElseGet(UserBase::new);
-        }
-
         responseLogin.setCid(userBase.getCid());
         responseLogin.setEmail(userBase.getEmail());
         responseLogin.setPhoneNumber(userBase.getPhoneNumber());
@@ -168,7 +167,8 @@ public class LoginService {
         responseLogin.setIsVerified(userBase.getIsVerified());
         responseLogin.setLastLogin(DateConversion.toString(userBase.getLastLogin(), DateFormats.datetime));
         responseLogin.setRetailData(setupRetailData(userBase));
-        responseLogin.setSessionId(UUID.randomUUID().toString());
+        responseLogin.setToken(UUID.randomUUID().toString());
+        return responseLogin;
     }
 
     public RetailData setupRetailData(
@@ -177,23 +177,23 @@ public class LoginService {
         RetailData retailData = new RetailData();
         retailData.setFullname(userBase.getFullName());
         retailData.setGender(
-            userBase.getGender()==null ? DefaultValues.emptyString : userBase.getGender().toString()
+            userBase.getGender() == null ? DefaultValues.emptyString : userBase.getGender().toString()
         );
         retailData.setBirthDate(DateConversion.toString(userBase.getBirthDate(), DateFormats.birthdate));
         retailData.setPreferences(StringConversion.stringToList(userBase.getPreferences()));
         retailData.setSectors(StringConversion.stringToList(userBase.getSectors()));
         retailData.setDocuments(setupDocuments(userBase.getUserDocuments()));
-        retailData.setLinkedAccounts(new ArrayList<>());
+        retailData.setLinkedAccounts(setupLinkedAccounts(userBase.getUserLinkedAccounts()));
         return retailData;
     }
 
-    public List<Documents> setupDocuments(List<UserDocument> listDocument){
+    public List<Documents> setupDocuments(List<UserDocument> listDocument) {
         List<Documents> documentsResponse = new ArrayList<>();
         List<UserDocument> filterList = listDocument.stream().filter(
-            documents -> documents.getGroupType().equals(UserType.RETAIL.getCode())
+            documents -> documents.getGroupType().getCode().equals(UserType.RETAIL.getCode())
         ).collect(Collectors.toList());
 
-        if(filterList.size()>0){
+        if (filterList.size() > 0) {
             for (UserDocument document : filterList) {
                 Documents documents = new Documents();
                 documents.setType(document.getDocumentType().getName());
@@ -202,5 +202,25 @@ public class LoginService {
             }
         }
         return documentsResponse;
+    }
+
+    public List<LinkedAccounts> setupLinkedAccounts(List<UserLinkedAccount> listAccounts) {
+        List<LinkedAccounts> accountsResponse = new ArrayList<>();
+        List<UserLinkedAccount> filterList = listAccounts.stream().filter(
+            accounts -> accounts.getGroupType().getCode().equals(UserType.RETAIL.getCode())
+        ).collect(Collectors.toList());
+
+        if (filterList.size() > 0) {
+            for (UserLinkedAccount account : filterList) {
+                LinkedAccounts accounts = new LinkedAccounts();
+                accounts.setAppsId(account.getAppsId());
+                accounts.setApps(AppsLinkedAccount.valueOf(account.getApps().toString()).getCode());
+                accounts.setAppsCustomerName(account.getAppsCustomerName());
+                accounts.setAppsCustomerEmail(account.getAppsCustomerEmail());
+                accounts.setAppsCustomerImage(account.getAppsCustomerImage());
+                accountsResponse.add(accounts);
+            }
+        }
+        return accountsResponse;
     }
 }

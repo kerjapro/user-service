@@ -15,7 +15,7 @@ public interface UserLinkedAccountRepository extends JpaRepository<UserLinkedAcc
         "WHERE lower(ula.apps) LIKE lower(:apps) AND lower(ula.apps_customer_email) like lower(:email);", nativeQuery = true)
     boolean existsOtherAccount(@Param("apps") String apps, @Param("email") String email);
 
-    @Query(value = "SELECT ula.id, ula.apps, ula.apps_customer_email, ula.apps_customer_image, ula.apps_customer_name, ula.apps_id, ula.apps_token, ula.cid " +
+    @Query(value = "SELECT * " +
         "FROM user_linked_account ula " +
         "WHERE lower(ula.apps) LIKE lower(:apps) AND lower(ula.apps_customer_email) like lower(:email);", nativeQuery = true)
     Optional<UserLinkedAccount> findByAppsAndEmail(@Param("apps") String apps, @Param("email") String email);

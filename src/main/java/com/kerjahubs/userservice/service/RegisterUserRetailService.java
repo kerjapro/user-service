@@ -76,7 +76,6 @@ public class RegisterUserRetailService {
         userBase.setPhoneNumber(request.getPhoneNumber());
         userBase.setPassword(request.getPassword());
         userBase.setPlatformRegister(request.getRegistrationPlatform());
-
         return userBase;
     }
 }
