@@ -26,5 +26,9 @@ public interface UserBaseRepository extends JpaRepository<UserBase, String> {
         " WHERE ub.email = :email ;", nativeQuery = true)
     Optional<UserBase> findByEmail(@Param("email") String email);
 
-
+    @Query(value = "SELECT *" +
+        " FROM user_base ub" +
+        " WHERE ub.cid = :cid" +
+        " AND ub.password = :password ;", nativeQuery = true)
+    Optional<UserBase> findByIdAndPassword(@Param("cid") String cid, @Param("password") String password);
 }
