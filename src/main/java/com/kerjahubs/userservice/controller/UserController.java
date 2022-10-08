@@ -3,9 +3,11 @@ package com.kerjahubs.userservice.controller;
 import com.kerjahubs.common.constant.RequestHeaders;
 import com.kerjahubs.common.model.request.BaseRequest;
 import com.kerjahubs.userservice.constant.UrlValues;
+import com.kerjahubs.userservice.model.request.RequestInquiryProfilePartner;
 import com.kerjahubs.userservice.model.request.RequestLogin;
 import com.kerjahubs.userservice.model.request.RequestRegister;
 import com.kerjahubs.userservice.model.request.RequestRegisterPartner;
+import com.kerjahubs.userservice.service.InquiryProfilePartnerService;
 import com.kerjahubs.userservice.service.LoginService;
 import com.kerjahubs.userservice.service.RegisterPartnerService;
 import com.kerjahubs.userservice.service.RegisterUserRetailService;
@@ -25,6 +27,9 @@ public class UserController {
 
     @Autowired
     RegisterPartnerService registerPartnerService;
+
+    @Autowired
+    InquiryProfilePartnerService inquiryProfilePartnerService;
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.login)
@@ -71,6 +76,23 @@ public class UserController {
             registerPartnerService.registerPartner(
                 new BaseRequest<>(
                     requestRegisterPartner
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.inquiryProfilePartner)
+    public ResponseEntity<?> getProfilePartner(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestInquiryProfilePartner requestInquiryProfilePartner
+    ){
+        return new ResponseEntity<>(
+            inquiryProfilePartnerService.getProfilePartner(
+                new BaseRequest<>(
+                    requestInquiryProfilePartner
                 )
             ),
             HttpStatus.OK

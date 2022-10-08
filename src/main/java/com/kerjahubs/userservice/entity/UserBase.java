@@ -73,4 +73,6 @@ public class UserBase implements Serializable {
     List<UserDocument> userDocuments = new ArrayList<>();
     @OneToMany(mappedBy = "cid")
     List<UserLinkedAccount> userLinkedAccounts = new ArrayList<>();
+    @OneToMany(mappedBy = "cid")
+    List<UserPartner> userPartners = new ArrayList<>();
 }
