@@ -1,6 +1,7 @@
 package com.kerjahubs.userservice.service;
 
 import com.kerjahubs.common.constant.DateFormats;
+import com.kerjahubs.common.constant.DefaultValues;
 import com.kerjahubs.common.constant.FormatValues;
 import com.kerjahubs.common.constant.MessageValues;
 import com.kerjahubs.common.model.request.BaseRequest;
@@ -30,7 +31,8 @@ public class RegisterUserRetailService {
             ) {
                 response.setResponseError(
                     MessageValues.error.title.register.general,
-                    MessageValues.error.message.register.user.existEmail
+                    MessageValues.error.message.register.user.existEmail,
+                    DefaultValues.emptyString
                 );
                 return response;
             }
@@ -40,7 +42,8 @@ public class RegisterUserRetailService {
             ) {
                 response.setResponseError(
                     MessageValues.error.title.register.general,
-                    MessageValues.error.message.register.user.existPhone
+                    MessageValues.error.message.register.user.existPhone,
+                    DefaultValues.emptyString
                 );
                 return response;
             }
@@ -54,7 +57,8 @@ public class RegisterUserRetailService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.general
+                MessageValues.error.message.general,
+                DefaultValues.emptyString
             );
         }
         return response;

@@ -28,7 +28,7 @@ public class UserLinkedAccount {
     private String appsId = DefaultValues.emptyString;
     @Column(name = "appsCustomerName", length = 100)
     private String appsCustomerName = DefaultValues.emptyString;
-    @Column(name = "appsCustomerImage")
+    @Column(name = "appsCustomerImage",length = 8192)
     private String appsCustomerImage = DefaultValues.emptyString;
     @Column(name = "appsCustomerEmail", length = 100)
     private String appsCustomerEmail = DefaultValues.emptyString;

@@ -3,7 +3,6 @@ package com.kerjahubs.userservice.service;
 import com.kerjahubs.common.constant.DateFormats;
 import com.kerjahubs.common.constant.DefaultValues;
 import com.kerjahubs.common.constant.MessageValues;
-import com.kerjahubs.common.enums.KelasType;
 import com.kerjahubs.common.enums.ModulType;
 import com.kerjahubs.common.model.request.BaseRequest;
 import com.kerjahubs.common.model.response.BaseResponse;
@@ -48,7 +47,8 @@ public class AddEditModulService {
         }catch (Exception e){
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.general
+                MessageValues.error.message.general,
+                DefaultValues.emptyString
             );
         }
         return response;
@@ -57,7 +57,7 @@ public class AddEditModulService {
     public KelasModul setupModulKelas(RequestAddModuleProduct request){
         KelasModul modul = kelasModulRepository.findById(request.getId()).orElseGet(KelasModul::new);
         modul.setId(request.getId().isEmpty() ? UUID.randomUUID().toString() : request.getId());
-        modul.setProductId(request.getProductId().isEmpty() ? modul.getProductId() : request.getProductId());
+        modul.setKelasId(request.getProductId().isEmpty() ? modul.getKelasId() : request.getProductId());
         modul.setModulType(request.getModulType().isEmpty() ? modul.getModulType(): ModulType.valueOf(request.getModulType()));
         modul.setModulName(request.getModulName().isEmpty() ? modul.getModulName() : request.getModulName());
         modul.setModulDesc(request.getModulDesc().isEmpty() ? modul.getModulDesc() : request.getModulDesc());

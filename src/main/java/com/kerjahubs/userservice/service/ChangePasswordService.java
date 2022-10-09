@@ -1,6 +1,7 @@
 package com.kerjahubs.userservice.service;
 
 import com.kerjahubs.common.constant.DateFormats;
+import com.kerjahubs.common.constant.DefaultValues;
 import com.kerjahubs.common.constant.MessageValues;
 import com.kerjahubs.common.model.request.BaseRequest;
 import com.kerjahubs.common.model.response.BaseResponse;
@@ -42,7 +43,8 @@ public class ChangePasswordService {
         }catch (Exception e){
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.password.change
+                MessageValues.error.message.password.change,
+                DefaultValues.emptyString
             );
         }
         return response;

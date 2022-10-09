@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -42,7 +44,7 @@ public class Kelas {
     private Integer seat = DefaultValues.emptyInteger;
     @Column(name = "url", nullable = false, length = 100)
     private String url = DefaultValues.emptyString;
-    @Column(name = "image")
+    @Column(name = "image", length = 8192)
     private String image = DefaultValues.emptyString;
     @Column(name = "language", length = 36)
     private String language = DefaultValues.emptyString;
@@ -56,4 +58,8 @@ public class Kelas {
     private Date updatedAt = DateConversion.getDateNow(DateFormats.datetime);
     @Column(name = "status", columnDefinition = "TINYINT", length = 1)
     private Boolean status = Boolean.TRUE;
+    @OneToMany(mappedBy = "kelasId")
+    List<KelasBenefit> benefits = new ArrayList<>();
+    @OneToMany(mappedBy = "kelasId")
+    List<KelasModul> moduls = new ArrayList<>();
 }

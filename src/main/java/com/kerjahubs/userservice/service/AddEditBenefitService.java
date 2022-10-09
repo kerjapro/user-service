@@ -46,7 +46,8 @@ public class AddEditBenefitService {
         }catch (Exception e){
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.general
+                MessageValues.error.message.general,
+                DefaultValues.emptyString
             );
         }
         return response;
@@ -55,7 +56,7 @@ public class AddEditBenefitService {
     public KelasBenefit setupBenefitKelas(RequestAddBenefitProduct request){
         KelasBenefit benefit = kelasBenefitRepository.findById(request.getId()).orElseGet(KelasBenefit::new);
         benefit.setId(request.getId().isEmpty() ? UUID.randomUUID().toString() : request.getId());
-        benefit.setProductId(request.getProductId().isEmpty() ? benefit.getProductId() : request.getProductId());
+        benefit.setKelasId(request.getProductId().isEmpty() ? benefit.getKelasId() : request.getProductId());
         benefit.setBenefitName(request.getBenefitName().isEmpty() ? benefit.getBenefitName() : request.getBenefitName());
         benefit.setSequence(request.getSequence() == DefaultValues.emptyInteger ? benefit.getSequence() : request.getSequence());
         benefit.setStatus(request.getStatus());

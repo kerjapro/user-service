@@ -18,8 +18,8 @@ public class KelasBenefit {
     @Id
     @Column(name = "id", nullable = false, length = 36)
     private String id = DefaultValues.emptyString;
-    @Column(name = "productId", nullable = false, length = 36)
-    private String productId = DefaultValues.emptyString;
+    @Column(name = "kelasId", nullable = false, length = 36)
+    private String kelasId = DefaultValues.emptyString;
     @Column(name = "benefitName", nullable = false)
     private String benefitName = DefaultValues.emptyString;
     @Convert(converter = NumberToNumberConverter.class)

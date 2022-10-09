@@ -23,7 +23,8 @@ public class UserDocument {
     @Enumerated(EnumType.STRING)
     @Column(name = "groupType", length = 30)
     private DocumentGroupType groupType;
-    @Column(name = "value")
+    @Lob
+    @Column(name = "value", columnDefinition = "TEXT", length = 8192)
     private String value = DefaultValues.emptyString;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "typeId")

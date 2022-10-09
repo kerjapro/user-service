@@ -19,7 +19,7 @@ public class Banners implements Serializable {
     @Column(name = "id", length = 36)
     private String id = DefaultValues.emptyString;
     @Convert(converter = StringToStringConverter.class)
-    @Column(name = "image")
+    @Column(name = "image", length = 8192)
     private String image = DefaultValues.emptyString;
     @Convert(converter = StringToStringConverter.class)
     @Column(name = "url", length = 100)

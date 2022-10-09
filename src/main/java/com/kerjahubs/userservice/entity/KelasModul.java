@@ -20,8 +20,8 @@ public class KelasModul {
     @Id
     @Column(name = "id", nullable = false, length = 36)
     private String id = DefaultValues.emptyString;
-    @Column(name = "productId", nullable = false, length = 36)
-    private String productId = DefaultValues.emptyString;
+    @Column(name = "kelasId", nullable = false, length = 36)
+    private String kelasId = DefaultValues.emptyString;
     @Enumerated(EnumType.STRING)
     @Column(name = "modulType", length = 36)
     private ModulType modulType;
@@ -29,7 +29,7 @@ public class KelasModul {
     private String modulName = DefaultValues.emptyString;
     @Column(name = "modulDesc", columnDefinition = "text")
     private String modulDesc = DefaultValues.emptyString;
-    @Column(name = "file")
+    @Column(name = "file", length = 8192)
     private String file = DefaultValues.emptyString;
     @Convert(converter = NumberToNumberConverter.class)
     @Column(name = "sequence", length = 5)

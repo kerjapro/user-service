@@ -26,7 +26,7 @@ public class UserPartner implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "partnerType")
     private PartnerType partnerType;
-    @Column(name = "partnerLogo")
+    @Column(name = "partnerLogo", length = 8192)
     private String partnerLogo = DefaultValues.emptyString;
     @Column(name = "about", columnDefinition = "text")
     private String about = DefaultValues.emptyString;
