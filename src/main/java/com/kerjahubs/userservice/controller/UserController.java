@@ -30,6 +30,9 @@ public class UserController {
     EditProfileRetailService editProfileRetailService;
 
     @Autowired
+    EditProfilePartnerService editProfilePartnerService;
+
+    @Autowired
     ChangePasswordService changePasswordService;
 
     @CrossOrigin(origins = "*")
@@ -94,6 +97,23 @@ public class UserController {
             editProfileRetailService.editProfile(
                 new BaseRequest<>(
                     requestEditProfileDataRetail
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.editProfilePartner)
+    public ResponseEntity<?> editProfilePartner(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestEditProfileDataPartner requestEditProfileDataPartner
+    ){
+        return new ResponseEntity<>(
+            editProfilePartnerService.editProfilePartner(
+                new BaseRequest<>(
+                    requestEditProfileDataPartner
                 )
             ),
             HttpStatus.OK

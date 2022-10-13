@@ -45,8 +45,8 @@ public class RegisterPartnerService {
                 && userPartnerRepository.existsByPartnerName(baseRequest.getRequest().getPartnerName())
             ) {
                 response.setResponseError(
-                    MessageValues.error.title.register.general,
-                    MessageValues.error.message.register.partner.existName,
+                    MessageValues.error.title.user.register.general,
+                    MessageValues.error.message.user.register.partner.existName,
                     DefaultValues.emptyString
                 );
                 return response;
@@ -59,8 +59,8 @@ public class RegisterPartnerService {
                 userDocumentRepository.saveAll(listDocument);
             }
             response.setResponseSuccess(
-                MessageValues.success.title.register.general,
-                MessageValues.success.message.register.partner
+                MessageValues.success.title.user.register.general,
+                MessageValues.success.message.user.register.partner
             );
         } catch (Exception e) {
             response.setResponseError(

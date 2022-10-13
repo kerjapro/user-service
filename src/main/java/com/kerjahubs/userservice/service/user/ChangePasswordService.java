@@ -29,7 +29,7 @@ public class ChangePasswordService {
             if(userBase.getCid().isEmpty()){
                 response.setResponseSuccess(
                     MessageValues.error.title.general,
-                    MessageValues.error.message.password.wrong
+                    MessageValues.error.message.user.password.wrong
                 );
                 return response;
             }
@@ -39,12 +39,12 @@ public class ChangePasswordService {
             userBaseRepository.saveAndFlush(userBase);
             response.setResponseSuccess(
                 MessageValues.success.title.general,
-                MessageValues.success.message.password.change
+                MessageValues.success.message.user.password.change
             );
         }catch (Exception e){
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.password.change,
+                MessageValues.error.message.user.password.change,
                 DefaultValues.emptyString
             );
         }

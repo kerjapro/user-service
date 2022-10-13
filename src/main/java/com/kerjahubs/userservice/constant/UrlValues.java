@@ -5,6 +5,7 @@ public class UrlValues {
     public static final String inquiryProfilePartner = "inquiry-profile-partner";
     public static final String registerRetail = "register-retail";
     public static final String editProfileRetail = "edit-profile-data-retail";
+    public static final String editProfilePartner = "edit-profile-data-partner";
     public static final String registerPartner = "register-partner";
     public static final String kelas = "add-product";
     public static final String modul = "add-module-product";

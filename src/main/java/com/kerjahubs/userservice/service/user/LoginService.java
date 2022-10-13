@@ -64,7 +64,7 @@ public class LoginService {
             if (userBase.getCid().isEmpty()) {
                 response.setResponseError(
                     MessageValues.error.title.general,
-                    MessageValues.error.message.login.notFound,
+                    MessageValues.error.message.user.login.notFound,
                     new ResponseLogin()
                 );
                 return response;
@@ -73,7 +73,7 @@ public class LoginService {
             if (!userBase.getPassword().equalsIgnoreCase(baseRequest.getRequest().getPassword())) {
                 response.setResponseError(
                     MessageValues.error.title.general,
-                    MessageValues.error.message.login.wrongPassword,
+                    MessageValues.error.message.user.login.wrongPassword,
                     new ResponseLogin()
                 );
                 return response;

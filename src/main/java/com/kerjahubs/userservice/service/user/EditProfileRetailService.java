@@ -24,15 +24,23 @@ public class EditProfileRetailService {
 
         try{
             UserBase userBase = setupUserBase(baseRequest.getRequest());
+            if(userBase.getCid().isEmpty()){
+                response.setResponseSuccess(
+                    MessageValues.error.title.general,
+                    MessageValues.error.message.notFound
+                );
+                return response;
+            }
+
             userBaseRepository.saveAndFlush(userBase);
             response.setResponseSuccess(
                 MessageValues.success.title.general,
-                MessageValues.success.message.general
+                MessageValues.success.message.user.edit.general
             );
         } catch (Exception e){
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.general,
+                MessageValues.error.message.user.edit.general,
                 DefaultValues.emptyString
             );
         }
@@ -41,9 +49,6 @@ public class EditProfileRetailService {
 
     public UserBase setupUserBase(RequestEditProfileDataRetail request){
         UserBase userBase = userBaseRepository.findById(request.getCid()).orElseGet(UserBase::new);
-        userBase.setCid(
-            request.getCid().isEmpty() ? userBase.getCid() : request.getCid()
-        );
         userBase.setEmail(
             request.getEmail().isEmpty() ? userBase.getEmail() : request.getEmail()
         );
