@@ -10,6 +10,4 @@ public class UrlValues {
     public static final String modul = "add-module-product";
     public static final String benefit = "add-benefit-product";
     public static final String changePassword = "change-password";
-    public static final String getBanners = "banners";
-    public static final String getParameters = "parameters";
 }
