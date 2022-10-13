@@ -34,6 +34,8 @@ public class EditProfileDocumentService {
                 );
                 return response;
             }
+
+            userDocumentRepository.saveAndFlush(userDocument);
             response.setResponseSuccess(
                 MessageValues.success.title.general,
                 MessageValues.success.message.user.edit.general
