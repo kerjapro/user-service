@@ -41,6 +41,9 @@ public class UserController {
     @Autowired
     EditProfileDocumentService editProfileDocumentService;
 
+    @Autowired
+    AddProfileLinkedAccountService addProfileLinkedAccountService;
+
     @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.login)
     public ResponseEntity<?> login(
@@ -188,6 +191,23 @@ public class UserController {
             editProfileDocumentService.editDocument(
                 new BaseRequest<>(
                     requestEditProfileDocument
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.addLinkedAccount)
+    public ResponseEntity<?> addDocument(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestAddProfileLinkedAccount requestAddProfileLinkedAccount
+    ){
+        return new ResponseEntity<>(
+            addProfileLinkedAccountService.addLinkedAccount(
+                new BaseRequest<>(
+                    requestAddProfileLinkedAccount
                 )
             ),
             HttpStatus.OK

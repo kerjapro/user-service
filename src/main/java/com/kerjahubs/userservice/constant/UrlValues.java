@@ -13,4 +13,6 @@ public class UrlValues {
     public static final String changePassword = "change-password";
     public static final String addDocument = "add-profile-document";
     public static final String editDocument = "edit-profile-document";
+
+    public static final String addLinkedAccount = "add-profile-linked-account";
 }

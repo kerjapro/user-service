@@ -61,7 +61,8 @@ public class LoginService {
                 baseRequest.getRequest().getPassword()
             ).orElseGet(UserBase::new);
 
-            if (userBase.getCid().isEmpty()) {
+            if (!userBaseRepository.existsByEmail(baseRequest.getRequest().getUsername())
+                && !userBaseRepository.existsByPhoneNumber(baseRequest.getRequest().getUsername())) {
                 response.setResponseError(
                     MessageValues.error.title.general,
                     MessageValues.error.message.user.login.notFound,
