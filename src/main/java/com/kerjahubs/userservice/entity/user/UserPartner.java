@@ -38,11 +38,11 @@ public class UserPartner implements Serializable {
     private String sectorId = DefaultValues.emptyString;
     @Column(name = "sectorSubId", length = 36)
     private String sectorSubId = DefaultValues.emptyString;
-    @Column(name = "provinceId", length = 10)
+    @Column(name = "provinceId", length = 36)
     private String provinceId = DefaultValues.emptyString;
     @Column(name = "provinceName")
     private String provinceName = DefaultValues.emptyString;
-    @Column(name = "districtId", length = 10)
+    @Column(name = "districtId", length = 36)
     private String districtId = DefaultValues.emptyString;
     @Column(name = "districtName")
     private String districtName = DefaultValues.emptyString;

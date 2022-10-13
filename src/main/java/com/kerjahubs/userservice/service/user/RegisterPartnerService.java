@@ -1,4 +1,4 @@
-package com.kerjahubs.userservice.service.register;
+package com.kerjahubs.userservice.service.user;
 
 import com.kerjahubs.common.constant.DateFormats;
 import com.kerjahubs.common.constant.DefaultValues;
@@ -53,11 +53,11 @@ public class RegisterPartnerService {
             }
 
             UserPartner userPartner = setupUserPartner(baseRequest.getRequest());
+            userPartnerRepository.save(userPartner);
             if (baseRequest.getRequest().getDocuments().size() > 0) {
                 List<UserDocument> listDocument = setupDocumentUserPartner(baseRequest.getRequest(), userPartner);
                 userDocumentRepository.saveAll(listDocument);
             }
-            userPartnerRepository.save(userPartner);
             response.setResponseSuccess(
                 MessageValues.success.title.register.general,
                 MessageValues.success.message.register.partner

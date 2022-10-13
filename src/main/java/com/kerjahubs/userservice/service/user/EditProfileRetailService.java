@@ -1,4 +1,4 @@
-package com.kerjahubs.userservice.service.register;
+package com.kerjahubs.userservice.service.user;
 
 import com.kerjahubs.common.constant.DateFormats;
 import com.kerjahubs.common.constant.DefaultValues;
@@ -67,6 +67,7 @@ public class EditProfileRetailService {
         userBase.setSectors(
             StringConversion.listToString(request.getRetailData().getSectors())
         );
+        userBase.setUpdatedAt(DateConversion.getDateNow(DateFormats.datetime));
         return userBase;
     }
 }

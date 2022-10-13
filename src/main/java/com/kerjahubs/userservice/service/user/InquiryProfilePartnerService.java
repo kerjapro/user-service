@@ -1,4 +1,4 @@
-package com.kerjahubs.userservice.service.register;
+package com.kerjahubs.userservice.service.user;
 
 import com.kerjahubs.common.constant.MessageValues;
 import com.kerjahubs.common.enums.AppsLinkedAccount;

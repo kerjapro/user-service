@@ -1,4 +1,4 @@
-package com.kerjahubs.userservice.service.register;
+package com.kerjahubs.userservice.service.user;
 
 import com.kerjahubs.common.constant.DateFormats;
 import com.kerjahubs.common.constant.DefaultValues;
