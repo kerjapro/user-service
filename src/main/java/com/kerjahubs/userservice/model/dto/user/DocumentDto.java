@@ -11,10 +11,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class DocumentDto implements DtoConverter<UserDocument, DocumentDto> {
+    public String id = DefaultValues.emptyString;
     public String type = DefaultValues.emptyString;
     public String value = DefaultValues.emptyString;
 
     public DocumentDto(UserDocument userDocument){
+        this.id = userDocument.getId();
         this.type = userDocument.getDocumentType().getName();
         this.value = userDocument.getValue();
     }

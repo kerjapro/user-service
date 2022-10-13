@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class LinkedAccountsDto implements DtoConverter<UserLinkedAccount, LinkedAccountsDto> {
+    public String id = DefaultValues.emptyString;
     private String apps = DefaultValues.emptyString;
     private String appsId = DefaultValues.emptyString;
     private String appsCustomerName = DefaultValues.emptyString;
@@ -18,6 +19,7 @@ public class LinkedAccountsDto implements DtoConverter<UserLinkedAccount, Linked
     private String appsCustomerEmail = DefaultValues.emptyString;
 
     public LinkedAccountsDto(UserLinkedAccount userLinkedAccount){
+        this.id = userLinkedAccount.getId();
         this.apps = userLinkedAccount.getApps().getCode();
         this.appsId = userLinkedAccount.getAppsId();
         this.appsCustomerName = userLinkedAccount.getAppsCustomerName();

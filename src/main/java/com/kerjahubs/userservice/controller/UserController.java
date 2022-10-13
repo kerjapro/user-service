@@ -35,6 +35,12 @@ public class UserController {
     @Autowired
     ChangePasswordService changePasswordService;
 
+    @Autowired
+    AddProfileDocumentService addProfileDocumentService;
+
+    @Autowired
+    EditProfileDocumentService editProfileDocumentService;
+
     @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.login)
     public ResponseEntity<?> login(
@@ -148,6 +154,40 @@ public class UserController {
             changePasswordService.changePassword(
                 new BaseRequest<>(
                     requestChangePassword
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.addDocument)
+    public ResponseEntity<?> addDocument(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestAddProfileDokumen requestAddProfileDokumen
+    ){
+        return new ResponseEntity<>(
+            addProfileDocumentService.addDocument(
+                new BaseRequest<>(
+                    requestAddProfileDokumen
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.editDocument)
+    public ResponseEntity<?> editDocument(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestEditProfileDocument requestEditProfileDocument
+    ){
+        return new ResponseEntity<>(
+            editProfileDocumentService.editDocument(
+                new BaseRequest<>(
+                    requestEditProfileDocument
                 )
             ),
             HttpStatus.OK

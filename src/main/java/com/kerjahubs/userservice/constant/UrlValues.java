@@ -11,4 +11,6 @@ public class UrlValues {
     public static final String modul = "add-module-product";
     public static final String benefit = "add-benefit-product";
     public static final String changePassword = "change-password";
+    public static final String addDocument = "add-profile-document";
+    public static final String editDocument = "edit-profile-document";
 }
