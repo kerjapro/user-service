@@ -1,4 +1,4 @@
-package com.kerjahubs.userservice.entity.lowongan;
+package com.kerjahubs.userservice.entity.kerja;
 
 import com.kerjahubs.common.constant.DefaultValues;
 import lombok.Data;
@@ -11,9 +11,9 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name="LOWONGAN_BENEFIT")
+@Table(name="KERJA_REQUIREMENT")
 @NoArgsConstructor
-public class LowonganBenefit {
+public class KerjaRequirement {
     @Id
     @Column(name = "id", length = 36)
     private String id = DefaultValues.emptyString;
@@ -21,6 +21,6 @@ public class LowonganBenefit {
     private String name = DefaultValues.emptyString;
     @Column(name = "sequence", length = 5)
     private int sequence = DefaultValues.emptyInteger;
-    @Column(name = "lowonganId", length = 36)
-    private String lowonganId = DefaultValues.emptyString;
+    @Column(name = "kerjaId", length = 36)
+    private String kerjaId = DefaultValues.emptyString;
 }

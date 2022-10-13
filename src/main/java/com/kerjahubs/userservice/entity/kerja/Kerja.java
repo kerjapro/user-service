@@ -1,4 +1,4 @@
-package com.kerjahubs.userservice.entity.lowongan;
+package com.kerjahubs.userservice.entity.kerja;
 
 import com.kerjahubs.common.constant.DateFormats;
 import com.kerjahubs.common.constant.DefaultValues;
@@ -14,9 +14,9 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="LOWONGAN_KERJA")
+@Table(name="KERJA")
 @NoArgsConstructor
-public class Lowongan {
+public class Kerja {
     @Id
     @Column(name = "id", nullable = false, length = 36)
     private String id = DefaultValues.emptyString;
@@ -40,8 +40,10 @@ public class Lowongan {
     private String companyIcon = DefaultValues.emptyString;
     @Column(name = "companyImage", columnDefinition = "text", length = 8192)
     private String companyImage = DefaultValues.emptyString;
-    @OneToMany(mappedBy = "lowonganId")
-    List<LowonganBenefit> benefits = new ArrayList<>();
-    @OneToMany(mappedBy = "lowonganId")
-    List<LowonganRequirement> requirements = new ArrayList<>();
+    @Column(name = "url", length = 100)
+    private String url = DefaultValues.emptyString;
+    @OneToMany(mappedBy = "kerjaId")
+    List<KerjaBenefit> benefits = new ArrayList<>();
+    @OneToMany(mappedBy = "kerjaId")
+    List<KerjaRequirement> requirements = new ArrayList<>();
 }

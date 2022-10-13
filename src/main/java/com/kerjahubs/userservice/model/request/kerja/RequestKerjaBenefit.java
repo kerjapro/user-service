@@ -1,10 +1,10 @@
-package com.kerjahubs.userservice.model.request.lowongan;
+package com.kerjahubs.userservice.model.request.kerja;
 
 import com.kerjahubs.common.constant.DefaultValues;
 import lombok.Data;
 
 @Data
-public class RequestLowonganBenefit {
+public class RequestKerjaBenefit {
     public String id = DefaultValues.emptyString;
     public String name = DefaultValues.emptyString;
     public Integer sequence = DefaultValues.emptyInteger;

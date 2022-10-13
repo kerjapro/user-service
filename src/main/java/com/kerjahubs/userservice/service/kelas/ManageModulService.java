@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class AddEditModulService {
+public class ManageModulService {
     @Autowired
     KelasModulRepository kelasModulRepository;
 

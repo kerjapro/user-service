@@ -36,8 +36,8 @@ public class KelasModul {
     private Integer sequence = DefaultValues.emptyInteger;
     @Column(name = "status", columnDefinition = "TINYINT", length = 1)
     private Boolean status = Boolean.TRUE;
-    @Column(name = "createdAt", nullable = false, length = 36)
+    @Column(name = "createdAt")
     private Date createdAt = DateConversion.getDateNow(DateFormats.datetime);
-    @Column(name = "updatedAt", nullable = false, length = 36)
+    @Column(name = "updatedAt")
     private Date updatedAt = DateConversion.getDateNow(DateFormats.datetime);
 }

@@ -1,4 +1,4 @@
-package com.kerjahubs.userservice.model.request.lowongan;
+package com.kerjahubs.userservice.model.request.kerja;
 
 import com.kerjahubs.common.constant.DefaultValues;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class RequestLowongan {
+public class RequestKerja {
     public String id = DefaultValues.emptyString;
     public String title = DefaultValues.emptyString;
     public String description = DefaultValues.emptyString;
@@ -18,4 +18,5 @@ public class RequestLowongan {
     public String partnerId = DefaultValues.emptyString;
     public String companyIcon = DefaultValues.emptyString;
     public String companyImage = DefaultValues.emptyString;
+    public Boolean status = Boolean.TRUE;
 }

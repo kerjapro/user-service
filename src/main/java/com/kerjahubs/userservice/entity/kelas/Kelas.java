@@ -58,6 +58,8 @@ public class Kelas {
     private Date updatedAt = DateConversion.getDateNow(DateFormats.datetime);
     @Column(name = "status", columnDefinition = "TINYINT", length = 1)
     private Boolean status = Boolean.TRUE;
+    @Column(name = "views", length = 10)
+    private int views = DefaultValues.emptyInteger;
     @OneToMany(mappedBy = "kelasId")
     List<KelasBenefit> benefits = new ArrayList<>();
     @OneToMany(mappedBy = "kelasId")

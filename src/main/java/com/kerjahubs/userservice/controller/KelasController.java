@@ -6,9 +6,9 @@ import com.kerjahubs.userservice.constant.UrlValues;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddBenefitProduct;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddModuleProduct;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddProduct;
-import com.kerjahubs.userservice.service.kelas.AddEditBenefitService;
-import com.kerjahubs.userservice.service.kelas.AddEditKelasService;
-import com.kerjahubs.userservice.service.kelas.AddEditModulService;
+import com.kerjahubs.userservice.service.kelas.ManageBenefitService;
+import com.kerjahubs.userservice.service.kelas.ManageKelasService;
+import com.kerjahubs.userservice.service.kelas.ManageModulService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class KelasController {
     @Autowired
-    AddEditKelasService addEditKelasService;
+    ManageKelasService addEditKelasService;
     @Autowired
-    AddEditBenefitService addEditBenefitService;
+    ManageBenefitService manageBenefitService;
     @Autowired
-    AddEditModulService addEditModulService;
+    ManageModulService manageModulService;
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.kelas)
@@ -48,7 +48,7 @@ public class KelasController {
         @RequestBody RequestAddBenefitProduct requestAddBenefitProduct
     ){
         return new ResponseEntity<>(
-            addEditBenefitService.addEditBenefitKelas(
+            manageBenefitService.addEditBenefitKelas(
                 new BaseRequest<>(
                     requestAddBenefitProduct
                 )
@@ -65,7 +65,7 @@ public class KelasController {
         @RequestBody RequestAddModuleProduct requestAddModuleProduct
     ){
         return new ResponseEntity<>(
-            addEditModulService.addEditModulKelas(
+            manageModulService.addEditModulKelas(
                 new BaseRequest<>(
                     requestAddModuleProduct
                 )
