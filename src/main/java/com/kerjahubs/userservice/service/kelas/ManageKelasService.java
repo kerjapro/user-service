@@ -19,7 +19,7 @@ public class ManageKelasService {
     @Autowired
     KelasRepository kelasRepository;
 
-    public BaseResponse<Object> addEditKelas(BaseRequest<RequestAddProduct> baseRequest) {
+    public BaseResponse<Object> manageKelas(BaseRequest<RequestAddProduct> baseRequest) {
         BaseResponse<Object> response = new BaseResponse<>();
 
         try {

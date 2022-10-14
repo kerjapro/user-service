@@ -6,9 +6,9 @@ import com.kerjahubs.userservice.constant.UrlValues;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddBenefitProduct;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddModuleProduct;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddProduct;
-import com.kerjahubs.userservice.service.kelas.ManageBenefitService;
+import com.kerjahubs.userservice.service.kelas.ManageKelasBenefitService;
 import com.kerjahubs.userservice.service.kelas.ManageKelasService;
-import com.kerjahubs.userservice.service.kelas.ManageModulService;
+import com.kerjahubs.userservice.service.kelas.ManageKelasModulService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +19,9 @@ public class KelasController {
     @Autowired
     ManageKelasService addEditKelasService;
     @Autowired
-    ManageBenefitService manageBenefitService;
+    ManageKelasBenefitService manageKelasBenefitService;
     @Autowired
-    ManageModulService manageModulService;
+    ManageKelasModulService manageKelasModulService;
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.kelas)
@@ -29,9 +29,9 @@ public class KelasController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestAddProduct requestAddProduct
-    ){
+    ) {
         return new ResponseEntity<>(
-            addEditKelasService.addEditKelas(
+            addEditKelasService.manageKelas(
                 new BaseRequest<>(
                     requestAddProduct
                 )
@@ -41,14 +41,14 @@ public class KelasController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping(value = UrlValues.benefit)
+    @PostMapping(value = UrlValues.benefitKelas)
     public ResponseEntity<?> benefit(
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestAddBenefitProduct requestAddBenefitProduct
-    ){
+    ) {
         return new ResponseEntity<>(
-            manageBenefitService.addEditBenefitKelas(
+            manageKelasBenefitService.manageKelasBenefit(
                 new BaseRequest<>(
                     requestAddBenefitProduct
                 )
@@ -58,14 +58,14 @@ public class KelasController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping(value = UrlValues.modul)
+    @PostMapping(value = UrlValues.modulKelas)
     public ResponseEntity<?> modul(
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestAddModuleProduct requestAddModuleProduct
-    ){
+    ) {
         return new ResponseEntity<>(
-            manageModulService.addEditModulKelas(
+            manageKelasModulService.manageKelasModul(
                 new BaseRequest<>(
                     requestAddModuleProduct
                 )

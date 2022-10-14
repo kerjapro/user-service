@@ -26,7 +26,7 @@ public class KelasDto implements DtoConverter<Kelas, KelasDto> {
     public boolean isHaveCertificate = Boolean.TRUE;
     public String sectorName = DefaultValues.emptyString;
 
-    public KelasDto(Kelas kelas){
+    public KelasDto(Kelas kelas) {
         this.id = kelas.getId();
         this.productType = kelas.getKelasType().getCode();
         this.productName = kelas.getKelasName();

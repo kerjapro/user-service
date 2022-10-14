@@ -14,7 +14,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="KERJA")
+@Table(name = "KERJA")
 @NoArgsConstructor
 public class Kerja {
     @Id
@@ -42,6 +42,14 @@ public class Kerja {
     private String companyImage = DefaultValues.emptyString;
     @Column(name = "url", length = 100)
     private String url = DefaultValues.emptyString;
+    @Column(name = "createdAt", nullable = false, length = 36)
+    private Date createdAt = DateConversion.getDateNow(DateFormats.datetime);
+    @Column(name = "updatedAt", nullable = false, length = 36)
+    private Date updatedAt = DateConversion.getDateNow(DateFormats.datetime);
+    @Column(name = "status", columnDefinition = "TINYINT", length = 1)
+    private Boolean status = Boolean.TRUE;
+    @Column(name = "views", length = 10)
+    private int views = DefaultValues.emptyInteger;
     @OneToMany(mappedBy = "kerjaId")
     List<KerjaBenefit> benefits = new ArrayList<>();
     @OneToMany(mappedBy = "kerjaId")

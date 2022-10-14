@@ -17,7 +17,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="KELAS")
+@Table(name = "KELAS")
 @NoArgsConstructor
 public class Kelas {
     @Id

@@ -18,7 +18,7 @@ public class SectorDto implements DtoConverter<Sectors, SectorDto> {
     private String url = DefaultValues.emptyString;
     private List<SectorSubDto> subSectors = new ArrayList<>();
 
-    public SectorDto(Sectors sectors){
+    public SectorDto(Sectors sectors) {
         this.id = sectors.getId();
         this.group = sectors.getGroupType();
         this.value = sectors.getUrl();

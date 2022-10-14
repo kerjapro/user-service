@@ -16,7 +16,7 @@ public class KelasBenefitDto implements DtoConverter<KelasBenefit, KelasBenefitD
     private Integer sequence = DefaultValues.emptyInteger;
     private String status = DefaultValues.emptyString;
 
-    public KelasBenefitDto(KelasBenefit benefit){
+    public KelasBenefitDto(KelasBenefit benefit) {
         this.id = benefit.getId();
         this.benefitName = benefit.getBenefitName();
         this.sequence = benefit.getSequence();

@@ -19,7 +19,7 @@ public class KelasModulDto implements DtoConverter<KelasModul, KelasModulDto> {
     private Integer sequence = DefaultValues.emptyInteger;
     private String status = DefaultValues.emptyString;
 
-    public KelasModulDto(KelasModul modul){
+    public KelasModulDto(KelasModul modul) {
         this.id = modul.getId();
         this.modulType = modul.getModulType().toString();
         this.modulName = modul.getModulName();

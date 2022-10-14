@@ -18,7 +18,7 @@ public class LinkedAccountsDto implements DtoConverter<UserLinkedAccount, Linked
     private String appsCustomerImage = DefaultValues.emptyString;
     private String appsCustomerEmail = DefaultValues.emptyString;
 
-    public LinkedAccountsDto(UserLinkedAccount userLinkedAccount){
+    public LinkedAccountsDto(UserLinkedAccount userLinkedAccount) {
         this.id = userLinkedAccount.getId();
         this.apps = userLinkedAccount.getApps().getCode();
         this.appsId = userLinkedAccount.getAppsId();

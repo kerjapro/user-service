@@ -6,12 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Entity
-@Table(name="DOCUMENT_TYPE")
+@Table(name = "DOCUMENT_TYPE")
 @NoArgsConstructor
 public class DocumentType implements Serializable {
     @Id

@@ -20,7 +20,7 @@ public class EditProfilePartnerService {
 
         try {
             UserPartner userPartner = setupUserPartner(baseRequest.getRequest());
-            if(userPartner.getPartnerId().isEmpty()){
+            if (userPartner.getPartnerId().isEmpty()) {
                 response.setResponseSuccess(
                     MessageValues.error.title.general,
                     MessageValues.error.message.notFound
@@ -43,7 +43,7 @@ public class EditProfilePartnerService {
         return response;
     }
 
-    public UserPartner setupUserPartner(RequestEditProfileDataPartner request){
+    public UserPartner setupUserPartner(RequestEditProfileDataPartner request) {
         UserPartner userPartner = userPartnerRepository.findById(request.getPartnerId()).orElseGet(UserPartner::new);
         userPartner.setPartnerName(
             request.getPartnerName().isEmpty() ? userPartner.getPartnerName() : request.getPartnerName()

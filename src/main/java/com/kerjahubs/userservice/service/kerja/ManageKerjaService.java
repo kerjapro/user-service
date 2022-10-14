@@ -1,7 +1,6 @@
 package com.kerjahubs.userservice.service.kerja;
 
 import com.kerjahubs.common.constant.*;
-import com.kerjahubs.common.enums.KelasType;
 import com.kerjahubs.common.model.request.BaseRequest;
 import com.kerjahubs.common.model.response.BaseResponse;
 import com.kerjahubs.common.utility.DateConversion;
@@ -78,6 +77,10 @@ public class ManageKerjaService {
         kerja.setCompanyIcon(request.getCompanyIcon().isEmpty() ? kerja.getCompanyIcon() : request.getCompanyIcon());
         kerja.setCompanyImage(request.getCompanyImage().isEmpty() ? kerja.getCompanyImage() : request.getCompanyImage());
         kerja.setUrl(setupUrlKerja(kerja.getTitle(), kerja.getId()));
+        kerja.setCreatedAt(request.getId().isEmpty() ? DateConversion.getDateNow(DateFormats.datetime) : kerja.getCreatedAt());
+        kerja.setUpdatedAt(DateConversion.getDateNow(DateFormats.datetime));
+        kerja.setStatus(request.getStatus());
+        kerja.setViews(DefaultValues.emptyInteger);
         return kerja;
     }
 

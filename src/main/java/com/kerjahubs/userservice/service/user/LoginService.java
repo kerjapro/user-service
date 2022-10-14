@@ -94,14 +94,14 @@ public class LoginService {
         return response;
     }
 
-    public UserBase setupUserBase(RequestLogin request){
+    public UserBase setupUserBase(RequestLogin request) {
         UserBase userBase = userBaseRepository.findByEmail(
             request.getOtherAccount().getEmail()
         ).orElseGet(UserBase::new);
 
         List<UserLinkedAccount> listAccounts = new ArrayList<>();
 
-        if(userBase.getCid().isEmpty()){
+        if (userBase.getCid().isEmpty()) {
             userBase = registerUserBase(request);
             userBaseRepository.save(userBase);
 
@@ -121,7 +121,7 @@ public class LoginService {
             request.getOtherAccount().getEmail()
         ).orElseGet(UserLinkedAccount::new);
 
-        if(userLinkedAccount.getId().isEmpty()){
+        if (userLinkedAccount.getId().isEmpty()) {
             userLinkedAccount.setId(
                 UUID.randomUUID().toString()
             );

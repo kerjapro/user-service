@@ -18,7 +18,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="USER_BASE")
+@Table(name = "USER_BASE")
 @NoArgsConstructor
 public class UserBase implements Serializable {
     @Id

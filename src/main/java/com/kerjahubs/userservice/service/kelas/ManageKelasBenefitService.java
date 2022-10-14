@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class ManageBenefitService {
+public class ManageKelasBenefitService {
     @Autowired
     KelasBenefitRepository kelasBenefitRepository;
 
-    public BaseResponse<Object> addEditBenefitKelas(BaseRequest<RequestAddBenefitProduct> baseRequest){
+    public BaseResponse<Object> manageKelasBenefit(BaseRequest<RequestAddBenefitProduct> baseRequest){
         BaseResponse<Object> response = new BaseResponse<>();
 
         try{

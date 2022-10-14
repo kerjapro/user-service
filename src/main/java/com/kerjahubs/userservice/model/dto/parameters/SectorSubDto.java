@@ -10,12 +10,12 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class SectorSubDto implements DtoConverter<SectorSubs,SectorSubDto> {
+public class SectorSubDto implements DtoConverter<SectorSubs, SectorSubDto> {
     private String id = DefaultValues.emptyString;
     private String url = DefaultValues.emptyString;
     private String value = DefaultValues.emptyString;
 
-    public SectorSubDto(SectorSubs sectorSubs){
+    public SectorSubDto(SectorSubs sectorSubs) {
         this.id = sectorSubs.getId();
         this.url = sectorSubs.getUrl();
         this.value = sectorSubs.getValue();

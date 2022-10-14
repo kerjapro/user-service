@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @ComponentScan(basePackages = {"com.kerjahubs.common"})
 public class SecurityConfig extends BaseSecurityConfig {
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http.headers().contentSecurityPolicy("script-src 'self'");
         http.antMatcher("/**")
             .authorizeRequests()

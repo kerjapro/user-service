@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class ManageModulService {
+public class ManageKelasModulService {
     @Autowired
     KelasModulRepository kelasModulRepository;
 
-    public BaseResponse<Object> addEditModulKelas(BaseRequest<RequestAddModuleProduct> baseRequest){
+    public BaseResponse<Object> manageKelasModul(BaseRequest<RequestAddModuleProduct> baseRequest){
         BaseResponse<Object> response = new BaseResponse<>();
 
         try{

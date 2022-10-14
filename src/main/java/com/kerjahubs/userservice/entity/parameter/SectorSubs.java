@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@Table(name="PARAM_SECTOR_SUB")
+@Table(name = "PARAM_SECTOR_SUB")
 @NoArgsConstructor
 @AllArgsConstructor
 public class SectorSubs implements Serializable {

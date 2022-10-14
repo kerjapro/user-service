@@ -9,4 +9,5 @@ public class RequestKerjaRequirement {
     public String name = DefaultValues.emptyString;
     public Integer sequence = DefaultValues.emptyInteger;
     public String jobid = DefaultValues.emptyString;
+    public Boolean status = Boolean.TRUE;
 }

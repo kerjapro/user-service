@@ -17,16 +17,16 @@ public class ChangePasswordService {
     @Autowired
     UserBaseRepository userBaseRepository;
 
-    public BaseResponse<Object> changePassword(BaseRequest<RequestChangePassword> baseRequest){
+    public BaseResponse<Object> changePassword(BaseRequest<RequestChangePassword> baseRequest) {
         BaseResponse<Object> response = new BaseResponse<>();
 
-        try{
+        try {
             UserBase userBase = userBaseRepository.findByIdAndPassword(
                 baseRequest.getRequest().getCid(),
                 baseRequest.getRequest().getOldPassword()
             ).orElseGet(UserBase::new);
 
-            if(userBase.getCid().isEmpty()){
+            if (userBase.getCid().isEmpty()) {
                 response.setResponseSuccess(
                     MessageValues.error.title.general,
                     MessageValues.error.message.user.password.wrong
@@ -41,7 +41,7 @@ public class ChangePasswordService {
                 MessageValues.success.title.general,
                 MessageValues.success.message.user.password.change
             );
-        }catch (Exception e){
+        } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
                 MessageValues.error.message.user.password.change,

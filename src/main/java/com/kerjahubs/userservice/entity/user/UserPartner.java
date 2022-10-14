@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name="USER_PARTNER")
+@Table(name = "USER_PARTNER")
 @NoArgsConstructor
 public class UserPartner implements Serializable {
     @Id

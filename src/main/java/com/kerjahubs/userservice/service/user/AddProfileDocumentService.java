@@ -26,9 +26,9 @@ public class AddProfileDocumentService {
     public BaseResponse<Object> addDocument(BaseRequest<RequestAddProfileDokumen> baseRequest) {
         BaseResponse<Object> response = new BaseResponse<>();
 
-        try{
+        try {
             UserDocument userDocument = setupDocument(baseRequest.getRequest());
-            if(userDocument.getDocumentType().getId().isEmpty()){
+            if (userDocument.getDocumentType().getId().isEmpty()) {
                 response.setResponseError(
                     MessageValues.error.title.general,
                     MessageValues.error.message.typeNotFound,
@@ -42,7 +42,7 @@ public class AddProfileDocumentService {
                 MessageValues.success.title.general,
                 MessageValues.success.message.user.add.document.general
             );
-        } catch (Exception e){
+        } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
                 MessageValues.error.message.user.add.document.general,
@@ -52,7 +52,7 @@ public class AddProfileDocumentService {
         return response;
     }
 
-    public UserDocument setupDocument(RequestAddProfileDokumen request){
+    public UserDocument setupDocument(RequestAddProfileDokumen request) {
         UserDocument userDocument = new UserDocument();
         userDocument.setId(UUID.randomUUID().toString());
         userDocument.setCid(request.getCid());

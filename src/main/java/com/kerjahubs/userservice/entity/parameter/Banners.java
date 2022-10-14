@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name="PARAM_BANNER")
+@Table(name = "PARAM_BANNER")
 @NoArgsConstructor
 public class Banners implements Serializable {
     @Id

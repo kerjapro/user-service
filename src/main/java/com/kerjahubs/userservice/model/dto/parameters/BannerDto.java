@@ -15,7 +15,7 @@ public class BannerDto implements DtoConverter<Banners, BannerDto> {
     public String url = DefaultValues.emptyString;
     public int sequence = DefaultValues.emptyInteger;
 
-    public BannerDto(Banners banners){
+    public BannerDto(Banners banners) {
         this.image = banners.getImage();
         this.url = banners.getUrl();
         this.sequence = banners.getSequence();

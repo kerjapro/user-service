@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="USER_LINKED_ACCOUNT")
+@Table(name = "USER_LINKED_ACCOUNT")
 @NoArgsConstructor
 public class UserLinkedAccount {
     @Id
@@ -28,7 +28,7 @@ public class UserLinkedAccount {
     private String appsId = DefaultValues.emptyString;
     @Column(name = "appsCustomerName", length = 100)
     private String appsCustomerName = DefaultValues.emptyString;
-    @Column(name = "appsCustomerImage",length = 8192)
+    @Column(name = "appsCustomerImage", length = 8192)
     private String appsCustomerImage = DefaultValues.emptyString;
     @Column(name = "appsCustomerEmail", length = 100)
     private String appsCustomerEmail = DefaultValues.emptyString;

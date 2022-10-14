@@ -26,14 +26,14 @@ public class InquiryProfilePartnerService {
     @Autowired
     UserBaseRepository userBaseRepository;
 
-    public BaseResponse<ResponseInquiryProfilePartner> getProfilePartner(BaseRequest<RequestInquiryProfilePartner> baseRequest){
+    public BaseResponse<ResponseInquiryProfilePartner> getProfilePartner(BaseRequest<RequestInquiryProfilePartner> baseRequest) {
         BaseResponse<ResponseInquiryProfilePartner> response = new BaseResponse<>();
 
-        try{
+        try {
             UserBase userBase = userBaseRepository.findById(baseRequest.getRequest().getCid()).orElseGet(UserBase::new);
             ResponseInquiryProfilePartner responseInquiryProfilePartner = setupResponse(userBase);
             response.setResponse(responseInquiryProfilePartner);
-        } catch (Exception e){
+        } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
                 MessageValues.error.message.general,
@@ -43,12 +43,12 @@ public class InquiryProfilePartnerService {
         return response;
     }
 
-    public ResponseInquiryProfilePartner setupResponse(UserBase userBase){
+    public ResponseInquiryProfilePartner setupResponse(UserBase userBase) {
         ResponseInquiryProfilePartner responseInquiryProfilePartner = new ResponseInquiryProfilePartner();
         List<PartnerData> listPartner = new ArrayList<>();
 
         List<UserPartner> partners = userBase.getUserPartners();
-        if(partners.size()>0){
+        if (partners.size() > 0) {
             for (UserPartner partner : partners) {
                 PartnerData partnerData = new PartnerData();
                 partnerData.setPartnerId(partner.getPartnerId());

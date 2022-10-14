@@ -3,7 +3,6 @@ package com.kerjahubs.userservice.entity.kelas;
 import com.kerjahubs.common.constant.DateFormats;
 import com.kerjahubs.common.constant.DefaultValues;
 import com.kerjahubs.common.converter.NumberToNumberConverter;
-import com.kerjahubs.common.enums.KelasType;
 import com.kerjahubs.common.enums.ModulType;
 import com.kerjahubs.common.utility.DateConversion;
 import lombok.Data;
@@ -14,7 +13,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name="KELAS_MODUL")
+@Table(name = "KELAS_MODUL")
 @NoArgsConstructor
 public class KelasModul {
     @Id

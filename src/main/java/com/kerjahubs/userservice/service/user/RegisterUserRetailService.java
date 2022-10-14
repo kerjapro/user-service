@@ -65,7 +65,7 @@ public class RegisterUserRetailService {
     }
 
     public UserBase setupUserBase(RequestRegister request) {
-        int totalUser = (int) (userBaseRepository.count()+1);
+        int totalUser = (int) (userBaseRepository.count() + 1);
 
         UserBase userBase = new UserBase();
         userBase.setCid(

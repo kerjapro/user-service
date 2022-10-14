@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@Table(name="PARAM_PREFERENCE")
+@Table(name = "PARAM_PREFERENCE")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Preference implements Serializable {

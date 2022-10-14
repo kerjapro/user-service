@@ -19,12 +19,12 @@ public class EditProfileRetailService {
     @Autowired
     UserBaseRepository userBaseRepository;
 
-    public BaseResponse<Object> editProfile(BaseRequest<RequestEditProfileDataRetail> baseRequest){
+    public BaseResponse<Object> editProfile(BaseRequest<RequestEditProfileDataRetail> baseRequest) {
         BaseResponse<Object> response = new BaseResponse<>();
 
-        try{
+        try {
             UserBase userBase = setupUserBase(baseRequest.getRequest());
-            if(userBase.getCid().isEmpty()){
+            if (userBase.getCid().isEmpty()) {
                 response.setResponseSuccess(
                     MessageValues.error.title.general,
                     MessageValues.error.message.notFound
@@ -37,7 +37,7 @@ public class EditProfileRetailService {
                 MessageValues.success.title.general,
                 MessageValues.success.message.user.edit.general
             );
-        } catch (Exception e){
+        } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
                 MessageValues.error.message.user.edit.general,
@@ -47,7 +47,7 @@ public class EditProfileRetailService {
         return response;
     }
 
-    public UserBase setupUserBase(RequestEditProfileDataRetail request){
+    public UserBase setupUserBase(RequestEditProfileDataRetail request) {
         UserBase userBase = userBaseRepository.findById(request.getCid()).orElseGet(UserBase::new);
         userBase.setEmail(
             request.getEmail().isEmpty() ? userBase.getEmail() : request.getEmail()

@@ -23,14 +23,14 @@ public class AddProfileLinkedAccountService {
     public BaseResponse<Object> addLinkedAccount(BaseRequest<RequestAddProfileLinkedAccount> baseRequest) {
         BaseResponse<Object> response = new BaseResponse<>();
 
-        try{
+        try {
             UserLinkedAccount userLinkedAccount = setupLinkedAccount(baseRequest.getRequest());
             userLinkedAccountRepository.save(userLinkedAccount);
             response.setResponseSuccess(
                 MessageValues.success.title.general,
                 MessageValues.success.message.user.add.linkedAccount.general
             );
-        } catch (Exception e){
+        } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
                 MessageValues.error.message.user.add.linkedAccount.general,
@@ -41,7 +41,7 @@ public class AddProfileLinkedAccountService {
         return response;
     }
 
-    public UserLinkedAccount setupLinkedAccount(RequestAddProfileLinkedAccount request){
+    public UserLinkedAccount setupLinkedAccount(RequestAddProfileLinkedAccount request) {
         UserLinkedAccount userLinkedAccount = new UserLinkedAccount();
         userLinkedAccount.setId(UUID.randomUUID().toString());
         userLinkedAccount.setCid(request.getCid());

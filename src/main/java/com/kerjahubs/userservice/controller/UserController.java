@@ -50,7 +50,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestLogin requestLogin
-    ){
+    ) {
         return new ResponseEntity<>(
             loginService.login(
                 new BaseRequest<>(
@@ -67,7 +67,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestRegister requestRegister
-        ){
+    ) {
         return new ResponseEntity<>(
             registerUserRetailService.registerUserRetail(
                 new BaseRequest<>(
@@ -84,7 +84,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestRegisterPartner requestRegisterPartner
-    ){
+    ) {
         return new ResponseEntity<>(
             registerPartnerService.registerPartner(
                 new BaseRequest<>(
@@ -101,7 +101,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestEditProfileDataRetail requestEditProfileDataRetail
-    ){
+    ) {
         return new ResponseEntity<>(
             editProfileRetailService.editProfile(
                 new BaseRequest<>(
@@ -118,7 +118,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestEditProfileDataPartner requestEditProfileDataPartner
-    ){
+    ) {
         return new ResponseEntity<>(
             editProfilePartnerService.editProfilePartner(
                 new BaseRequest<>(
@@ -135,7 +135,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestInquiryProfilePartner requestInquiryProfilePartner
-    ){
+    ) {
         return new ResponseEntity<>(
             inquiryProfilePartnerService.getProfilePartner(
                 new BaseRequest<>(
@@ -152,7 +152,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestChangePassword requestChangePassword
-    ){
+    ) {
         return new ResponseEntity<>(
             changePasswordService.changePassword(
                 new BaseRequest<>(
@@ -169,7 +169,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestAddProfileDokumen requestAddProfileDokumen
-    ){
+    ) {
         return new ResponseEntity<>(
             addProfileDocumentService.addDocument(
                 new BaseRequest<>(
@@ -186,7 +186,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestEditProfileDocument requestEditProfileDocument
-    ){
+    ) {
         return new ResponseEntity<>(
             editProfileDocumentService.editDocument(
                 new BaseRequest<>(
@@ -203,7 +203,7 @@ public class UserController {
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
         @RequestBody RequestAddProfileLinkedAccount requestAddProfileLinkedAccount
-    ){
+    ) {
         return new ResponseEntity<>(
             addProfileLinkedAccountService.addLinkedAccount(
                 new BaseRequest<>(

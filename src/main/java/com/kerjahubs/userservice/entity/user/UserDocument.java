@@ -11,8 +11,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="USER_DOCUMENT")
-@SecondaryTable(name="DOCUMENT_TYPE", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))
+@Table(name = "USER_DOCUMENT")
+@SecondaryTable(name = "DOCUMENT_TYPE", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))
 @NoArgsConstructor
 public class UserDocument {
     @Id
