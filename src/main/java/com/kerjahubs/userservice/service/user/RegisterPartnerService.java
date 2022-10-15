@@ -52,6 +52,18 @@ public class RegisterPartnerService {
                 return response;
             }
 
+            if (userPartnerRepository.existsByCidAndPartnerType(
+                baseRequest.getRequest().getCid(),
+                PartnerType.valueOf(baseRequest.getRequest().getPartnerType()))
+            ) {
+                response.setResponseError(
+                    MessageValues.error.title.user.register.general,
+                    MessageValues.error.message.user.register.partner.existByCifAndPartnerType,
+                    DefaultValues.emptyString
+                );
+                return response;
+            }
+
             UserPartner userPartner = setupUserPartner(baseRequest.getRequest());
             userPartnerRepository.save(userPartner);
             if (baseRequest.getRequest().getDocuments().size() > 0) {
