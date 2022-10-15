@@ -42,9 +42,9 @@ public class Kerja {
     private String companyImage = DefaultValues.emptyString;
     @Column(name = "url", length = 100)
     private String url = DefaultValues.emptyString;
-    @Column(name = "createdAt", nullable = false, length = 36)
+    @Column(name = "createdAt")
     private Date createdAt = DateConversion.getDateNow(DateFormats.datetime);
-    @Column(name = "updatedAt", nullable = false, length = 36)
+    @Column(name = "updatedAt")
     private Date updatedAt = DateConversion.getDateNow(DateFormats.datetime);
     @Column(name = "status", columnDefinition = "TINYINT", length = 1)
     private Boolean status = Boolean.TRUE;

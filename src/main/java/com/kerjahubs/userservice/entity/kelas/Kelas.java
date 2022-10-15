@@ -48,13 +48,13 @@ public class Kelas {
     private String image = DefaultValues.emptyString;
     @Column(name = "language", length = 36)
     private String language = DefaultValues.emptyString;
-    @Column(name = "eventDate", nullable = false, length = 36)
+    @Column(name = "eventDate")
     private Date eventDate = DateConversion.getDateNow(DateFormats.datetime);
-    @Column(name = "expiredDate", nullable = false, length = 36)
+    @Column(name = "expiredDate")
     private Date expiredDate = DateConversion.getDateNow(DateFormats.datetime);
-    @Column(name = "createdAt", nullable = false, length = 36)
+    @Column(name = "createdAt")
     private Date createdAt = DateConversion.getDateNow(DateFormats.datetime);
-    @Column(name = "updatedAt", nullable = false, length = 36)
+    @Column(name = "updatedAt")
     private Date updatedAt = DateConversion.getDateNow(DateFormats.datetime);
     @Column(name = "status", columnDefinition = "TINYINT", length = 1)
     private Boolean status = Boolean.TRUE;
