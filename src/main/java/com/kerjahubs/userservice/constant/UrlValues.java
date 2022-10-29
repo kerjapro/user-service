@@ -3,6 +3,7 @@ package com.kerjahubs.userservice.constant;
 public class UrlValues {
     public static final String login = "login";
     public static final String inquiryProfilePartner = "inquiry-profile-partner";
+    public static final String inquiryProfileRetail = "inquiry-profile-retail";
     public static final String registerRetail = "register-retail";
     public static final String editProfileRetail = "edit-profile-data-retail";
     public static final String editProfilePartner = "edit-profile-data-partner";

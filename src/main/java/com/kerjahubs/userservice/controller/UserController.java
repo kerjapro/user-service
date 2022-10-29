@@ -24,6 +24,9 @@ public class UserController {
     RegisterPartnerService registerPartnerService;
 
     @Autowired
+    InquiryProfileRetailService inquiryProfileRetailService;
+
+    @Autowired
     InquiryProfilePartnerService inquiryProfilePartnerService;
 
     @Autowired
@@ -130,16 +133,33 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.inquiryProfileRetail)
+    public ResponseEntity<?> getProfileRetail(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestInquiryProfile requestInquiryProfile
+    ) {
+        return new ResponseEntity<>(
+            inquiryProfileRetailService.getProfileRetail(
+                new BaseRequest<>(
+                    requestInquiryProfile
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.inquiryProfilePartner)
     public ResponseEntity<?> getProfilePartner(
         @RequestHeader(RequestHeaders.language) String language,
         @RequestHeader(RequestHeaders.channel) String channel,
-        @RequestBody RequestInquiryProfilePartner requestInquiryProfilePartner
+        @RequestBody RequestInquiryProfile requestInquiryProfile
     ) {
         return new ResponseEntity<>(
             inquiryProfilePartnerService.getProfilePartner(
                 new BaseRequest<>(
-                    requestInquiryProfilePartner
+                    requestInquiryProfile
                 )
             ),
             HttpStatus.OK

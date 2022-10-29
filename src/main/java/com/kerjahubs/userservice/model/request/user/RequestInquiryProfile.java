@@ -4,6 +4,6 @@ import com.kerjahubs.common.constant.DefaultValues;
 import lombok.Data;
 
 @Data
-public class RequestInquiryProfilePartner {
+public class RequestInquiryProfile {
     private String cid = DefaultValues.emptyString;
 }

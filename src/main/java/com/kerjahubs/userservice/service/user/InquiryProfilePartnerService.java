@@ -11,7 +11,7 @@ import com.kerjahubs.userservice.entity.user.UserPartner;
 import com.kerjahubs.userservice.model.dto.user.DocumentDto;
 import com.kerjahubs.userservice.model.dto.user.LinkedAccountsDto;
 import com.kerjahubs.userservice.model.PartnerData;
-import com.kerjahubs.userservice.model.request.user.RequestInquiryProfilePartner;
+import com.kerjahubs.userservice.model.request.user.RequestInquiryProfile;
 import com.kerjahubs.userservice.model.response.ResponseInquiryProfilePartner;
 import com.kerjahubs.userservice.repository.user.UserBaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class InquiryProfilePartnerService {
     @Autowired
     UserBaseRepository userBaseRepository;
 
-    public BaseResponse<ResponseInquiryProfilePartner> getProfilePartner(BaseRequest<RequestInquiryProfilePartner> baseRequest) {
+    public BaseResponse<ResponseInquiryProfilePartner> getProfilePartner(BaseRequest<RequestInquiryProfile> baseRequest) {
         BaseResponse<ResponseInquiryProfilePartner> response = new BaseResponse<>();
 
         try {
