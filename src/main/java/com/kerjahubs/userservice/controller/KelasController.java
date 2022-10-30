@@ -6,7 +6,9 @@ import com.kerjahubs.userservice.constant.UrlValues;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddBenefitProduct;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddModuleProduct;
 import com.kerjahubs.userservice.model.request.kelas.RequestAddProduct;
+import com.kerjahubs.userservice.model.request.kelas.RequestManageDiscountProduct;
 import com.kerjahubs.userservice.service.kelas.ManageKelasBenefitService;
+import com.kerjahubs.userservice.service.kelas.ManageKelasDiscountService;
 import com.kerjahubs.userservice.service.kelas.ManageKelasService;
 import com.kerjahubs.userservice.service.kelas.ManageKelasModulService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class KelasController {
     ManageKelasBenefitService manageKelasBenefitService;
     @Autowired
     ManageKelasModulService manageKelasModulService;
+
+    @Autowired
+    ManageKelasDiscountService manageKelasDiscountService;
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = UrlValues.kelas)
@@ -68,6 +73,23 @@ public class KelasController {
             manageKelasModulService.manageKelasModul(
                 new BaseRequest<>(
                     requestAddModuleProduct
+                )
+            ),
+            HttpStatus.OK
+        );
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = UrlValues.discountKelas)
+    public ResponseEntity<?> discount(
+        @RequestHeader(RequestHeaders.language) String language,
+        @RequestHeader(RequestHeaders.channel) String channel,
+        @RequestBody RequestManageDiscountProduct requestManageDiscountProduct
+    ) {
+        return new ResponseEntity<>(
+            manageKelasDiscountService.manageKelasDiscount(
+                new BaseRequest<>(
+                    requestManageDiscountProduct
                 )
             ),
             HttpStatus.OK

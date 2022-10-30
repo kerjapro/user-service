@@ -19,6 +19,8 @@ public class UrlValues {
     public static final String benefitKelas = "manage-class-benefits";
     public static final String modulKelas = "manage-class-modul";
 
+    public static final String discountKelas = "manage-class-discount";
+
     public static final String kerja = "manage-job";
     public static final String benefitKerja = "manage-job-benefits";
     public static final String requirementKerja = "manage-job-requirements";
