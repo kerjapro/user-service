@@ -94,14 +94,14 @@ public class UploadFileService {
         }
         if (request.getFileType().equalsIgnoreCase(ParameterValues.file.type.document)) {
             if (request.getGroupType().equalsIgnoreCase(ParameterValues.file.type.group.cv)) {
-                urlFile = ParameterValues.file.url.document.cv;
+                urlFile = ParameterValues.file.url.document.cv + filename;
             }
             if (request.getGroupType().equalsIgnoreCase(ParameterValues.file.type.group.modul)) {
-                urlFile = ParameterValues.file.url.document.modul;
+                urlFile = ParameterValues.file.url.document.modul + filename;
             }
         }
         if (request.getFileType().equalsIgnoreCase(ParameterValues.file.type.video)) {
-            urlFile = ParameterValues.file.url.video.course;
+            urlFile = ParameterValues.file.url.video.course + filename;
         }
         return urlFile;
     }
