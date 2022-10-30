@@ -22,4 +22,5 @@ public class UrlValues {
     public static final String kerja = "manage-job";
     public static final String benefitKerja = "manage-job-benefits";
     public static final String requirementKerja = "manage-job-requirements";
+    public static final String uploadFile = "upload-file";
 }

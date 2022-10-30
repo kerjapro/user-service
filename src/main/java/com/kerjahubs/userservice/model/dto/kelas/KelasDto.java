@@ -37,7 +37,7 @@ public class KelasDto implements DtoConverter<Kelas, KelasDto> {
 
     @Override
     public KelasDto convert(Kelas kelas) {
-        return null;
+        return new KelasDto(kelas);
     }
 
     @Override
