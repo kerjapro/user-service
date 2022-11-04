@@ -55,7 +55,7 @@ public class ManageKelasDiscountService {
 
             KelasDiscount discount = setupDiscountKelas(baseRequest.getRequest());
 
-            if(discount.getDiscountType().equals(DiscountType.PERSEN)){
+            if (discount.getDiscountType().equals(DiscountType.PERSEN)) {
                 if (discount.getDiscountValue().compareTo(new BigDecimal(100)) > DefaultValues.emptyInteger) {
                     response.setResponseError(
                         MessageValues.error.title.general,
@@ -66,7 +66,7 @@ public class ManageKelasDiscountService {
                 }
             }
 
-            if(discount.getDiscountType().equals(DiscountType.AMOUNT)){
+            if (discount.getDiscountType().equals(DiscountType.AMOUNT)) {
                 if (discount.getDiscountValue().compareTo(kelas.getPrice()) > DefaultValues.emptyInteger) {
                     response.setResponseError(
                         MessageValues.error.title.general,
@@ -97,13 +97,15 @@ public class ManageKelasDiscountService {
                         )
                     );
 
-                    if (discount.getQuota() > transactionItems.size()) {
-                        response.setResponseError(
-                            MessageValues.error.title.general,
-                            MessageValues.error.message.kelas.discount.quotaFilter,
-                            DefaultValues.emptyString
-                        );
-                        return response;
+                    if (transactionItems.size() > 0) {
+                        if (discount.getQuota() > transactionItems.size()) {
+                            response.setResponseError(
+                                MessageValues.error.title.general,
+                                MessageValues.error.message.kelas.discount.quotaFilter,
+                                DefaultValues.emptyString
+                            );
+                            return response;
+                        }
                     }
                 }
             }
