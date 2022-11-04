@@ -16,6 +16,7 @@ public class RequestManageDiscountProduct {
     public String startDate = DefaultValues.emptyString;
     public String expiredDate = DefaultValues.emptyString;
     public Boolean isHaveQuota = Boolean.FALSE;
+    public Boolean isHaveExpired = Boolean.FALSE;
     public int quota = DefaultValues.emptyInteger;
     public Boolean status = Boolean.TRUE;
 }

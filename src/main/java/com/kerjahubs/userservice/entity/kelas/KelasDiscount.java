@@ -37,10 +37,12 @@ public class KelasDiscount {
     private Date startDate = DateConversion.getDateNow(DateFormats.datetime);
     @Column(name = "expiredDate")
     private Date expiredDate = DateConversion.getDateNow(DateFormats.datetime);
-    @Column(name = "isHaveQuota", columnDefinition = "TINYINT", length = 1)
-    private Boolean isHaveQuota = Boolean.TRUE;
     @Column(name = "quota", length = 5)
     private Integer quota = DefaultValues.emptyInteger;
+    @Column(name = "isHaveQuota", columnDefinition = "TINYINT", length = 1)
+    private Boolean isHaveQuota = Boolean.TRUE;
+    @Column(name = "isHaveExpired", columnDefinition = "TINYINT", length = 1)
+    private Boolean isHaveExpired = Boolean.TRUE;
     @Column(name = "status", columnDefinition = "TINYINT", length = 1)
     private Boolean status = Boolean.TRUE;
     @Column(name = "createdAt")
