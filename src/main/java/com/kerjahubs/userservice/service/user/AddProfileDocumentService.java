@@ -45,7 +45,7 @@ public class AddProfileDocumentService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.user.add.document.general,
+                e.getMessage(),
                 DefaultValues.emptyString
             );
         }

@@ -36,7 +36,7 @@ public class InquiryProfilePartnerService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.general,
+                e.getMessage(),
                 new ResponseInquiryProfilePartner()
             );
         }

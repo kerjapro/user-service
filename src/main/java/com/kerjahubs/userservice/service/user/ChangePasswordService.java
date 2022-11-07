@@ -44,7 +44,7 @@ public class ChangePasswordService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.user.password.change,
+                e.getMessage(),
                 DefaultValues.emptyString
             );
         }

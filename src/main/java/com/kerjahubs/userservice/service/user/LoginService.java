@@ -87,7 +87,7 @@ public class LoginService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.general,
+                e.getMessage(),
                 new ResponseLogin()
             );
         }

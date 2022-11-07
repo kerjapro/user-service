@@ -40,7 +40,7 @@ public class EditProfileRetailService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.user.edit.general,
+                e.getMessage(),
                 DefaultValues.emptyString
             );
         }

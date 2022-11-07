@@ -57,7 +57,7 @@ public class RegisterUserRetailService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.general,
+                e.getMessage(),
                 DefaultValues.emptyString
             );
         }

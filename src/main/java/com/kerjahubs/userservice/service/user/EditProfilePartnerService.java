@@ -36,7 +36,7 @@ public class EditProfilePartnerService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.user.edit.general,
+                e.getMessage(),
                 DefaultValues.emptyString
             );
         }

@@ -33,7 +33,7 @@ public class AddProfileLinkedAccountService {
         } catch (Exception e) {
             response.setResponseError(
                 MessageValues.error.title.general,
-                MessageValues.error.message.user.add.linkedAccount.general,
+                e.getMessage(),
                 DefaultValues.emptyString
             );
         }
